@@ -1,0 +1,3556 @@
+<!doctype html>
+<html lang="id" data-theme="corporate" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ardhanaufa</title>
+
+    <!-- CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- JS -->
+    <script src="./js/main.js"></script>
+  </head>
+  <body class="select-none">
+    <!-- Navbar -->
+    <div
+      class="navbar bg-base-100 fixed top-0 z-50 w-full shadow-lg transition-colors duration-300"
+      id="navbar"
+    >
+      <div class="navbar-start">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+          >
+            <li><a href="#wisata">Wisata</a></li>
+            <li><a href="#kuliner">Kuliner</a></li>
+            <li><a href="#transportasi">Transportasi</a></li>
+            <li><a href="#paket">Paket</a></li>
+          </ul>
+        </div>
+        <a
+          href="index.html"
+          class="btn btn-ghost flex items-center gap-2 text-xl normal-case"
+        >
+          <img
+            src="./images/logo/logo.jpg"
+            alt="Ardhanaufa"
+            class="h-8 w-8 rounded-full"
+          />
+          Ardhanaufa
+        </a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="#wisata">Wisata</a></li>
+          <li><a href="#kuliner">Kuliner</a></li>
+          <li><a href="#transportasi">Transportasi</a></li>
+          <li><a href="#paket">Paket</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <button
+          id="loginBtn"
+          class="btn btn-primary"
+          onclick="document.getElementById('loginModal').showModal()"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+    <!-- Modal Login -->
+    <dialog id="loginModal" class="modal">
+      <div class="modal-box">
+        <h3 class="mb-4 text-center text-lg font-bold">Login</h3>
+        <form id="formLogin" class="space-y-4">
+          <input
+            type="text"
+            id="loginUsername"
+            placeholder="Username"
+            class="input input-bordered w-full"
+            required
+          />
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            class="input input-bordered w-full"
+            required
+          />
+          <button type="submit" class="btn btn-primary w-full">Login</button>
+        </form>
+        <p id="loginStatus" class="text-error mt-2 text-sm"></p>
+        <p class="mt-2 text-center text-sm">
+          Belum punya akun?
+          <a href="#" onclick="switchModal()" class="text-blue-700"
+            >Daftar di sini</a
+          >
+        </p>
+        <div class="modal-action justify-center">
+          <form method="dialog"><button class="btn">Tutup</button></form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Modal Daftar -->
+    <dialog id="registerModal" class="modal">
+      <div class="modal-box">
+        <h3 class="mb-4 text-lg font-bold">Daftar Akun</h3>
+        <form id="formRegister" class="space-y-4">
+          <input
+            type="text"
+            id="regUsername"
+            placeholder="Username Baru"
+            class="input input-bordered w-full"
+            required
+          />
+          <input
+            type="password"
+            id="regPassword"
+            placeholder="Password Baru"
+            class="input input-bordered w-full"
+            required
+          />
+          <button type="submit" class="btn btn-success w-full">Daftar</button>
+        </form>
+        <p id="registerStatus" class="text-error mt-2 text-sm"></p>
+        <p class="mt-2 text-sm">
+          Sudah punya akun?
+          <a href="#" onclick="switchModal(true)">Login di sini</a>
+        </p>
+        <div class="modal-action">
+          <form method="dialog"><button class="btn">Tutup</button></form>
+        </div>
+      </div>
+    </dialog>
+    <!-- Hero -->
+    <div class="hero relative h-screen w-full overflow-hidden">
+      <video
+        autoplay
+        loop
+        muted
+        class="absolute left-0 top-0 h-full w-full object-cover"
+      >
+        <source src="./videos/hero.mp4" type="video/mp4" />
+        Maaf, browser Anda tidak mendukung video ini.
+      </video>
+      <div class="hero-overlay z-10 h-full w-full"></div>
+      <div class="hero-content z-20 flex h-full items-center justify-center">
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="text-base-100 mb-6 text-5xl font-bold md:text-7xl">
+            The Spirit of Java
+          </h1>
+          <p class="text-base-200 mx-auto mb-8 max-w-3xl text-xl md:text-2xl">
+            Surakarta
+          </p>
+
+          <div class="flex flex-col justify-center gap-4 md:flex-row">
+            <a href="#wisata" class="btn btn-primary btn-lg">Menjelajah</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <div
+        class="absolute bottom-8 left-0 right-0 flex animate-bounce justify-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-10 w-10"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Content -->
+
+    <!-- Wisata -->
+    <section id="wisata" class="bg-base-100 px-4 py-16">
+      <div class="mb-12 mt-4 text-center">
+        <h2 class="text-primary text-4xl font-bold">Wisata</h2>
+      </div>
+
+      <div class="tabs tabs-boxed mb-4 flex justify-center">
+        <a
+          class="tab tab-active"
+          onclick="openDestination(event, 'keraton-surakarta')"
+          >Keraton Surakarta</a
+        >
+        <a class="tab" onclick="openDestination(event, 'solo-safari')"
+          >Solo Safari</a
+        >
+        <a class="tab" onclick="openDestination(event, 'pasar-klewer')"
+          >Pasar Klewer</a
+        >
+        <a class="tab" onclick="openDestination(event, 'taman-balekambang')"
+          >Taman Balekambang</a
+        >
+        <a class="tab" onclick="openDestination(event, 'museum-radya-pustaka')"
+          >Museum Radya Pustaka</a
+        >
+        <a
+          class="tab"
+          onclick="openDestination(event, 'museum-keris-nusantara')"
+          >Museum Keris Nusantara</a
+        >
+        <a class="tab" onclick="openDestination(event, 'taman-sriwedari')"
+          >Taman Sriwedari</a
+        >
+      </div>
+
+      <!-- Keraton Surakarta -->
+      <div id="keraton-surakarta" class="tab-content block">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Keraton Surakarta
+              </h2>
+              <figure
+                id="autoCarouselKeratonSurakarta"
+                class="overflow-hidden rounded-xl"
+              >
+                <img
+                  src="./images/wisata/keraton-surakarta/keraton-surakarta-1.jpg"
+                  alt="Keraton Surakarta"
+                  class="aspect-video rounded-lg"
+                  id="keraton-surakarta-1"
+                />
+                <img
+                  src="./images/wisata/keraton-surakarta/keraton-surakarta-2.jpg"
+                  alt="Keraton Surakarta"
+                  class="aspect-video rounded-lg"
+                  id="keraton-surakarta-2"
+                />
+                <img
+                  src="./images/wisata/keraton-surakarta/keraton-surakarta-3.jpg"
+                  alt="Keraton Surakarta"
+                  class="aspect-video rounded-lg"
+                  id="keraton-surakarta-3"
+                />
+                <img
+                  src="./images/wisata/keraton-surakarta/keraton-surakarta-4.jpg"
+                  alt="Keraton Surakarta"
+                  class="aspect-video rounded-lg"
+                  id="keraton-surakarta-4"
+                />
+                <img
+                  src="./images/wisata/keraton-surakarta/keraton-surakarta-5.jpg"
+                  alt="Keraton Surakarta"
+                  class="aspect-video rounded-lg"
+                  id="keraton-surakarta-5"
+                />
+
+                <script>
+                  const slidesKeratonSurakarta = [
+                    "keraton-surakarta-1",
+                    "keraton-surakarta-2",
+                    "keraton-surakarta-3",
+                    "keraton-surakarta-4",
+                    "keraton-surakarta-5",
+                  ];
+                  let currentIndexKeratonSurakarta = 0;
+                  let intervalKeratonSurakarta;
+
+                  function showSlideKeratonSurakarta(index) {
+                    if (index < 0) index = slidesKeratonSurakarta.length - 1;
+                    if (index >= slidesKeratonSurakarta.length) index = 0;
+
+                    for (let i = 0; i < slidesKeratonSurakarta.length; i++) {
+                      const slideKeratonSurakarta = document.getElementById(
+                        slidesKeratonSurakarta[i],
+                      );
+                      slideKeratonSurakarta.style.display = "none";
+                    }
+
+                    const activeSlideKeratonSurakarta = document.getElementById(
+                      slidesKeratonSurakarta[index],
+                    );
+                    activeSlideKeratonSurakarta.style.display = "block";
+
+                    currentIndexKeratonSurakarta = index;
+                  }
+
+                  function autoSlideKeratonSurakarta() {
+                    showSlideKeratonSurakarta(currentIndexKeratonSurakarta + 1);
+                  }
+
+                  function restartAutoSlideKeratonSurakarta() {
+                    clearInterval(intervalKeratonSurakarta);
+                    intervalKeratonSurakarta = setInterval(
+                      autoSlideKeratonSurakarta,
+                      1000,
+                    );
+                  }
+
+                  document
+                    .getElementById("autoCarouselKeratonSurakarta")
+                    .addEventListener("mouseenter", () => {
+                      clearInterval(intervalKeratonSurakarta);
+                    });
+
+                  document
+                    .getElementById("autoCarouselKeratonSurakarta")
+                    .addEventListener("mouseleave", () => {
+                      restartAutoSlideKeratonSurakarta();
+                    });
+
+                  document.addEventListener("DOMContentLoaded", () => {
+                    showSlideKeratonSurakarta(0);
+                    restartAutoSlideKeratonSurakarta();
+                  });
+                </script>
+              </figure>
+
+              <div
+                class="mt-4 h-64 w-full overflow-hidden rounded-lg shadow-lg"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.9746082667098!2d110.8279099!3d-7.5777426000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1666277a94b3%3A0xe54ac955c7781a7b!2sKeraton%20Surakarta%20Hadiningrat!5e0!3m2!1sid!2sid!4v1747101429869!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="rounded-lg"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Tentang</h2>
+              <div class="space-y-4 rounded-xl">
+                <div
+                  class="glass bg-base-100/70 space-y-4 rounded-xl p-4 text-justify"
+                >
+                  <p>
+                    Keraton Surakarta Hadiningrat, atau Keraton Surakarta,
+                    merupakan istana resmi Kesunanan Surakarta yang berlokasi di
+                    Kota Surakarta. Istana ini dibangun oleh Sri Susuhunan
+                    Pakubuwana II pada tahun 1743–1744 sebagai pengganti Keraton
+                    Kartasura yang rusak parah akibat Geger Pecinan.
+                  </p>
+                  <p>
+                    Arsitektur dan tata letak Keraton Surakarta memiliki
+                    kemiripan dengan Keraton Yogyakarta Hadiningrat yang
+                    dibangun setelahnya. Keduanya menjadi simbol penerus
+                    tradisional Kesultanan Mataram, yang kemudian terbagi
+                    menjadi dua kerajaan: Kesunanan Surakarta dan Kesultanan
+                    Yogyakarta.
+                  </p>
+                  <p>
+                    Secara keseluruhan, kompleks Keraton Surakarta mencakup area
+                    seluas 157 hektar, yang mencakup benteng Baluwarti,
+                    Alun-Alun Lor dan Kidul, Gapura Gladag, serta Masjid Agung
+                    Surakarta. Adapun kawasan inti keraton memiliki luas sekitar
+                    15 hektar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Informasi</h2>
+              <div class="space-y-6">
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Sabtu-Kamis: 09.00-15.00</li>
+                    <li>Jumat: Tutup</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Tiket:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Lokal: Rp,35.000</li>
+                    <li>Internasional: Rp,60.000</li>
+                    <li>Pelajar: Rp,25.000</li>
+                    <li>Balita: Gratis</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Fasilitas:</h3>
+                  <ul class="ml-5 list-disc space-y-2">
+                    <li>
+                      <span class="font-bold">Penyimpanan Warisan Budaya</span>:
+                      Keraton menjaga upacara adat, tarian sakral, musik, dan
+                      pusaka.
+                    </li>
+                    <li>
+                      <span class="font-bold">Museum Sejarah</span>: Keraton
+                      memiliki museum yang menyimpan benda sejarah, seperti
+                      pemberian raja-raja Eropa dan peralatan kesenian.
+                    </li>
+                    <li>
+                      <span class="font-bold">Tempat Wisata Bersejarah</span>:
+                      Keraton menjadi destinasi wisata untuk mengenal sejarah
+                      dan budaya Jawa.
+                    </li>
+                    <li>
+                      <span class="font-bold">Arsitektur Unik</span>: Keraton
+                      memiliki arsitektur Jawa dengan pengaruh Eropa.
+                    </li>
+                    <li>
+                      <span class="font-bold">Fungsi sebagai Istana</span>:
+                      Keraton masih berfungsi sebagai tempat tinggal Sunan dan
+                      rumah tangga kerajaan.
+                    </li>
+                    <li>
+                      <span class="font-bold">Pusat Budaya</span>: Keraton
+                      menjadi pusat kegiatan budaya, seperti pertunjukan seni
+                      tradisional dan upacara adat.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solo Safari -->
+      <div id="solo-safari" class="tab-content hidden">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Solo Safari</h2>
+              <figure id="autoCarouselSoloSafari">
+                <img
+                  src="./images/wisata/solo-safari/solo-safari-1.jpg"
+                  alt="Solo Safari"
+                  class="aspect-video rounded-lg"
+                  id="solo-safari-1"
+                />
+                <img
+                  src="./images/wisata/solo-safari/solo-safari-2.jpg"
+                  alt="Solo Safari"
+                  class="aspect-video rounded-lg"
+                  id="solo-safari-2"
+                />
+                <img
+                  src="./images/wisata/solo-safari/solo-safari-3.jpg"
+                  alt="Solo Safari"
+                  class="aspect-video rounded-lg"
+                  id="solo-safari-3"
+                />
+                <img
+                  src="./images/wisata/solo-safari/solo-safari-4.jpg"
+                  alt="Solo Safari"
+                  class="aspect-video rounded-lg"
+                  id="solo-safari-4"
+                />
+                <img
+                  src="./images/wisata/solo-safari/solo-safari-5.jpg"
+                  alt="Solo Safari"
+                  class="aspect-video rounded-lg"
+                  id="solo-safari-5"
+                />
+
+                <script>
+                  const slidesSoloSafari = [
+                    "solo-safari-1",
+                    "solo-safari-2",
+                    "solo-safari-3",
+                    "solo-safari-4",
+                    "solo-safari-5",
+                  ];
+                  let currentIndexSoloSafari = 0;
+                  let intervalSoloSafari;
+
+                  function showSlideSoloSafari(index) {
+                    if (index < 0) index = slidesSoloSafari.length - 1;
+                    if (index >= slidesSoloSafari.length) index = 0;
+
+                    for (let i = 0; i < slidesSoloSafari.length; i++) {
+                      const slideSoloSafari = document.getElementById(
+                        slidesSoloSafari[i],
+                      );
+                      slideSoloSafari.style.display = "none";
+                    }
+
+                    const activeSlideSoloSafari = document.getElementById(
+                      slidesSoloSafari[index],
+                    );
+                    activeSlideSoloSafari.style.display = "block";
+
+                    currentIndexSoloSafari = index;
+                  }
+
+                  function autoSlideSoloSafari() {
+                    showSlideSoloSafari(currentIndexSoloSafari + 1);
+                  }
+
+                  function restartAutoSlideSoloSafari() {
+                    clearInterval(intervalSoloSafari);
+                    intervalSoloSafari = setInterval(autoSlideSoloSafari, 1000);
+                  }
+
+                  document
+                    .getElementById("autoCarouselSoloSafari")
+                    .addEventListener("mouseenter", () => {
+                      clearInterval(intervalSoloSafari);
+                    });
+
+                  document
+                    .getElementById("autoCarouselSoloSafari")
+                    .addEventListener("mouseleave", () => {
+                      restartAutoSlideSoloSafari();
+                    });
+
+                  document.addEventListener("DOMContentLoaded", () => {
+                    showSlideSoloSafari(0);
+                    restartAutoSlideSoloSafari();
+                  });
+                </script>
+              </figure>
+              <div class="h-64 w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0947608266215!2d110.8585969!3d-7.564647000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1700f747eb7f%3A0x7c093b150e757def!2sSolo%20Safari!5e0!3m2!1sid!2sid!4v1747103546556!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="rounded-lg"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Tentang Solo Safari
+              </h2>
+              <div class="space-y-4 rounded-lg">
+                <div class="glass bg-base-100/70 rounded-lg p-4 text-justify">
+                  <p>
+                    Taman Satwa Taru Jurug Surakarta ( TSTJ ) pada awalnya
+                    merupakan pindahan Kebun Binatang Sriwedari yang lebih
+                    dikenal dengan sebutan “Kebun Raja“ didirikan Sri Susuhunan
+                    Pakubuwana X pada tanggal 20 Dal 1381 atau tanggal 17 Juli
+                    1901 dan merupakan Kebun Binatang tertua.
+                  </p>
+                  <p>
+                    Pada awalnya merupakan tempat hiburan bagi keluarga Raja
+                    yang berisi koleksi satwa akhirnya berkembang sebagai tempat
+                    rekreasi untuk masyarakat. Tahun 1983 Kebun Binatang
+                    Sriwedari dipindahkan ke Taman Jurug karena keberadaannya
+                    sudah tidak sesuai lagi dengan perkembangan kota karena
+                    berada di tengah pusat Kota Surakarta.
+                  </p>
+                  <p>
+                    Hingga akhirnya pada tahun 2022 Taman Jurug di revitalisasi
+                    menjadi Solo Safari, yang merupakan salah satu taman bermain
+                    yang menjadi ikon baru Kota Surakarta. Bila berkunjung ke
+                    Kota Surakarta jangan lupa untuk berwisata ke Solo Safari
+                    ya, ajak keluarga mu dan ramaikan Solo Safari yang selesai
+                    direvitalisasi.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Informasi</h2>
+              <div class="space-y-6">
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Senin-Jumat: 08.30–16.30</li>
+                    <li>Sabtu-Minggu: 08.00–16.30</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Tiket:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Dibawah 2 Tahun: Gratis</li>
+                    <li>
+                      Reguler:
+                      <ul>
+                        <li>Anak: Rp,45.000–Rp,60.000</li>
+                        <li>Dewasa: Rp,55.000–Rp,75.000</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Premium:
+                      <ul>
+                        <li>Anak: Rp,65.000–Rp,80.000</li>
+                        <li>Dewasa: Rp,90.000–Rp,110.000</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Fasilitas:</h3>
+                  <ul class="ml-5 list-disc space-y-2">
+                    <li>
+                      <span class="font-bold">Menjelajahi zona satwa:</span>:
+                      Menampilkan satwa dari berbagai habitat.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Berinteraksi dengan satwa jinak</span
+                      >: Di area Petting Zoo
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Mencicipi kuliner dengan pengalaman unik</span
+                      >: Seperti Makunde Bistro dengan pemandangan exhibit singa
+                      dan Bengawan Resto yang menghadap Danau Solo Safari.
+                    </li>
+                    <li>
+                      <span class="font-bold">Fasilitas hiburan</span>: Paint
+                      and Brush, Gokart, Dino Ride, dan Savanna Zipline.
+                    </li>
+                    <li>
+                      <span class="font-bold">Kegiatan edukasi</span>: Untuk
+                      meningkatkan kesadaran pengunjung Solo Safari tentang
+                      konservasi satwa liar.
+                    </li>
+                    <li>
+                      <span class="font-bold">Acara spesial</span>: Seperti Egg
+                      Hunting, Various Animal Show, dan Makunde Senja All You
+                      Can Eat
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pasar Klewer -->
+      <div id="pasar-klewer" class="tab-content hidden">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Pasar Klewer</h2>
+              <figure id="autoCarouselPasarKlewer">
+                <img
+                  src="images/wisata/pasar-klewer/pasar-klewer-1.jpg"
+                  alt="Pasar Klewer"
+                  class="aspect-video rounded-lg"
+                  id="pasar-klewer-1"
+                />
+                <img
+                  src="images/wisata/pasar-klewer/pasar-klewer-2.jpg"
+                  alt="Pasar Klewer"
+                  class="aspect-video rounded-lg"
+                  id="pasar-klewer-2"
+                />
+                <img
+                  src="images/wisata/pasar-klewer/pasar-klewer-3.jpg"
+                  alt="Pasar Klewer"
+                  class="aspect-video rounded-lg"
+                  id="pasar-klewer-3"
+                />
+                <img
+                  src="images/wisata/pasar-klewer/pasar-klewer-4.jpg"
+                  alt="Pasar Klewer"
+                  class="aspect-video rounded-lg"
+                  id="pasar-klewer-4"
+                />
+                <img
+                  src="images/wisata/pasar-klewer/pasar-klewer-5.jpg"
+                  alt="Pasar Klewer"
+                  class="aspect-video rounded-lg"
+                  id="pasar-klewer-5"
+                />
+
+                <script>
+                  const slidesPasarKlewer = [
+                    "pasar-klewer-1",
+                    "pasar-klewer-2",
+                    "pasar-klewer-3",
+                    "pasar-klewer-4",
+                    "pasar-klewer-5",
+                  ];
+                  let currentIndexPasarKlewer = 0;
+                  let intervalPasarKlewer;
+
+                  function showSlidePasarKlewer(index) {
+                    if (index < 0) index = slidesPasarKlewer.length - 1;
+                    if (index >= slidesPasarKlewer.length) index = 0;
+
+                    for (let i = 0; i < slidesPasarKlewer.length; i++) {
+                      const slidePasarKlewer = document.getElementById(
+                        slidesPasarKlewer[i],
+                      );
+                      slidePasarKlewer.style.display = "none";
+                    }
+
+                    const activeSlidePasarKlewer = document.getElementById(
+                      slidesPasarKlewer[index],
+                    );
+                    activeSlidePasarKlewer.style.display = "block";
+
+                    currentIndexPasarKlewer = index;
+                  }
+
+                  function autoSlidePasarKlewer() {
+                    showSlidePasarKlewer(currentIndexPasarKlewer + 1);
+                  }
+
+                  function restartAutoSlidePasarKlewer() {
+                    clearInterval(intervalPasarKlewer);
+                    intervalPasarKlewer = setInterval(
+                      autoSlidePasarKlewer,
+                      1000,
+                    );
+                  }
+
+                  document
+                    .getElementById("autoCarouselPasarKlewer")
+                    .addEventListener("mouseenter", () => {
+                      clearInterval(intervalPasarKlewer);
+                    });
+
+                  document
+                    .getElementById("autoCarouselPasarKlewer")
+                    .addEventListener("mouseleave", () => {
+                      restartAutoSlidePasarKlewer();
+                    });
+
+                  document.addEventListener("DOMContentLoaded", () => {
+                    showSlidePasarKlewer(0);
+                    restartAutoSlidePasarKlewer();
+                  });
+                </script>
+              </figure>
+              <div class="h-64 w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.996439324469!2d110.82416987411699!3d-7.575364874829022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a166660421029%3A0x8027f1e55c4303c7!2sPs.%20Klewer%2C%20Jl.%20DR.%20Radjiman%20No.5A%2C%20Gajahan%2C%20Kec.%20Ps.%20Kliwon%2C%20Kota%20Surakarta%2C%20Jawa%20Tengah%2057133!5e0!3m2!1sid!2sid!4v1747381871571!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Tentang Pasar Klewer
+              </h2>
+              <div class="space-y-4 rounded-lg">
+                <div
+                  class="glass bg-base-100/70 space-y-4 rounded-xl p-4 text-justify"
+                >
+                  <p>
+                    Pasar Klewer (bahasa Jawa: ꦦꦱꦂꦑ꧀ꦭꦺꦮꦺꦂ, translit. Pasar
+                    Klèwèr) adalah pasar tekstil terbesar di Kota Surakarta.
+                    Pasar yang letaknya bersebelahan dengan Keraton Surakarta
+                    ini juga merupakan pusat perbelanjaan kain batik yang
+                    menjadi rujukan para pedagang dari Yogyakarta, Surabaya,
+                    Semarang, dan kota-kota lain di Pulau Jawa. Bangunan pasar
+                    dua lantai ini menampung 1.467 pedagang dengan jumlah kios
+                    sekitar 2.064 unit. Pasar Klewer tidak hanya sebagai pusat
+                    perekonomian, tetapi juga tujuan wisata dan simbol Kota
+                    Surakarta.
+                  </p>
+                  <p>
+                    Pasar Klewer menyediakan berbagai macam jenis kain dan
+                    pakaian mulai dari pakaian anak-anak, dewasa, orang tua,
+                    pakaian resmi, pakaian sekolah, pakaian kemeja wanita, dan
+                    pakaian santai. Selain itu, terdapat kaos, jaket, dasi, kain
+                    bahan katun hingga sutra. Namun, yang menonjol di Pasar
+                    klewer adalah adanya berbagai macam jenis batik. Di
+                    antaranya batik tulis solo, batik cap, batik antik keraton,
+                    batik pantai keraton solo, dan batik putri solo. Selain itu,
+                    ada berbagai jenis batik dari Yogyakarta, Pekalongan,
+                    Banyumas, Madura, Betawi, dan kota-kota lainnya. Di pasar
+                    ini juga tersedia kain batik untuk baju, seprai, sarung
+                    bantal, dan aksesori-aksesori bermotif batik.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Informasi</h2>
+              <div class="space-y-6">
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: 08.30–16.00</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Tiket:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Umum: Gratis</li>
+                  </ul>
+                </div>
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Fasilitas:</h3>
+                  <ul class="ml-5 list-disc space-y-2">
+                    <li>
+                      <span class="font-bold">Aneka Jenis Pakaian</span>: Pasar
+                      Klewer menjual aneka jenis pakaian, baik untuk orang
+                      dewasa maupun anak-anak.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Kain Batik dari Berbagai Daerah</span
+                      >: Di Pasar Klewer, pengunjung juga bisa menemukan aneka
+                      katin batik dari beberapa daerah di Indonesia.
+                    </li>
+                    <li>
+                      <span class="font-bold">Aksesoris Pengrajin Daerah</span>:
+                      Tempat ini pun menjual kerajinan khas masyarakat Solo yang
+                      berkualitas tinggi, seperti cermin kayu ukir, kaca ukir,
+                      dan berbagai cendera mata berbahan dasar kaca.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Kemegahan Masjid Agung Surakarta</span
+                      >: Terdapat Masjid Agung Surakarta yang begitu mewah dan
+                      kokoh. Letaknya tepat berada di depan Pasar Klewer.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taman Balekambang -->
+      <div id="taman-balekambang" class="tab-content hidden">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Taman Balekambang
+              </h2>
+              <figure id="autoCarouselTamanBalekambang">
+                <img
+                  src="./images/wisata/taman-balekambang/taman-balekambang-1.jpg"
+                  alt="Taman Balekambang"
+                  class="aspect-video rounded-lg"
+                  id="taman-balekambang-1"
+                />
+                <img
+                  src="./images/wisata/taman-balekambang/taman-balekambang-2.jpg"
+                  alt="Taman Balekambang"
+                  class="aspect-video rounded-lg"
+                  id="taman-balekambang-2"
+                />
+                <img
+                  src="./images/wisata/taman-balekambang/taman-balekambang-3.jpg"
+                  alt="Taman Balekambang"
+                  class="aspect-video rounded-lg"
+                  id="taman-balekambang-3"
+                />
+                <img
+                  src="./images/wisata/taman-balekambang/taman-balekambang-4.jpg"
+                  alt="Taman Balekambang"
+                  class="aspect-video rounded-lg"
+                  id="taman-balekambang-4"
+                />
+                <img
+                  src="./images/wisata/taman-balekambang/taman-balekambang-5.jpg"
+                  alt="Taman Balekambang"
+                  class="aspect-video rounded-lg"
+                  id="taman-balekambang-5"
+                />
+
+                <script>
+                  const slidesTamanBalekambang = [
+                    "taman-balekambang-1",
+                    "taman-balekambang-2",
+                    "taman-balekambang-3",
+                    "taman-balekambang-4",
+                    "taman-balekambang-5",
+                  ];
+                  let currentIndexTamanBalekambang = 0;
+                  let intervalTamanBalekambang;
+
+                  function showSlideTamanBalekambang(index) {
+                    if (index < 0) index = slidesTamanBalekambang.length - 1;
+                    if (index >= slidesTamanBalekambang.length) index = 0;
+
+                    for (let i = 0; i < slidesTamanBalekambang.length; i++) {
+                      const slideTamanBalekambang = document.getElementById(
+                        slidesTamanBalekambang[i],
+                      );
+                      slideTamanBalekambang.style.display = "none";
+                    }
+
+                    const activeSlideTamanBalekambang = document.getElementById(
+                      slidesTamanBalekambang[index],
+                    );
+                    activeSlideTamanBalekambang.style.display = "block";
+
+                    currentIndexTamanBalekambang = index;
+                  }
+
+                  function autoSlideTamanBalekambang() {
+                    showSlideTamanBalekambang(currentIndexTamanBalekambang + 1);
+                  }
+
+                  function restartAutoSlideTamanBalekambang() {
+                    clearInterval(intervalTamanBalekambang);
+                    intervalTamanBalekambang = setInterval(
+                      autoSlideTamanBalekambang,
+                      1000,
+                    );
+                  }
+
+                  document
+                    .getElementById("autoCarouselTamanBalekambang")
+                    .addEventListener("mouseenter", () => {
+                      clearInterval(intervalTamanBalekambang);
+                    });
+
+                  document
+                    .getElementById("autoCarouselTamanBalekambang")
+                    .addEventListener("mouseleave", () => {
+                      restartAutoSlideTamanBalekambang();
+                    });
+
+                  document.addEventListener("DOMContentLoaded", () => {
+                    showSlideTamanBalekambang(0);
+                    restartAutoSlideTamanBalekambang();
+                  });
+                </script>
+              </figure>
+              <div class="h-64 w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.206169852432!2d110.80739399999999!3d-7.5524842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1736886a85cd%3A0xbfb2956209b033ef!2sTaman%20Balekambang%20Surakarta!5e0!3m2!1sid!2sid!4v1747106848626!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="rounded-lg"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Tentang Taman Balekambang
+              </h2>
+
+              <div class="space-y-4 rounded-xl">
+                <div
+                  class="glass bg-base-100/70 space-y-4 rounded-xl p-4 text-justify"
+                >
+                  <p>
+                    Taman balekambang pada awalnya bernama Partini Tuin dan
+                    Partinah Bosch yang dibangun oleh KGPAA Mangkunegara VII
+                    pada tanggal 26 Oktober 1921. Karena rasa sayang pada kedua
+                    putrinya, GRAy Partini Husein Djayaningrat dan GRAy Partinah
+                    Sukanta, maka dibuatlah sebuah taman dengan mengabadikan
+                    nama keduanya. Taman Balekambang memadukan konsep Eropa dan
+                    Jawa.
+                  </p>
+                  <p>
+                    Taman ini terdiri atas dua area. Area yang pertama dinamakan
+                    Partini Tuin atau Taman Air Partini, berfungsi sebagai
+                    penampungan air untuk membersihkan kotoran-kotoran yang ada
+                    di dalam kota juga digunakan untuk bermain perahu. Area yang
+                    kedua bernama Partnah Bosch artinya Hutan Partinah yang
+                    ditanami tumbuhan langka seperti kenari, beringin putih,
+                    beringin sungsang, dan apel coklat. Fungsi dari taman kota
+                    ini adalah sebagai resapan dan paru-paru kota.
+                  </p>
+                  <p>
+                    Pada mulanya taman ini tidak buka untuk umum pada masa
+                    pemerintahan KGPAA Mangkunegara VII, baru pada era KGPAA
+                    Mangkunegara VIII Taman Balekambang mulai dibuka untuk umum.
+                    Sejak itu mulai diselenggarakan beragam kesenian untuk
+                    rakyat seperti ketoprak lesung. Kesenian ini ialah ketoprak
+                    yang diiringi dengan alunan musik lesung.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Informasi</h2>
+              <div class="space-y-4 rounded-xl">
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <h3 class="mb-2 text-xl font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Senin: Tutup</li>
+                    <li>Selasa-Jumat: 10.00-16.00</li>
+                    <li>Sabtu-Minggu: 09.00-17.00</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Tiket:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Umum: Rp,5.000</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Fasilitas:</h3>
+                  <ul class="ml-5 list-disc space-y-2">
+                    <li>
+                      <span class="font-bold">Menikmati keindahan alam</span>:
+                      Taman Balekambang memiliki berbagai jenis pohon yang
+                      rindang, danau kecil, dan air mancur.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Membelajari sejarah dan budaya</span
+                      >: Taman ini memiliki museum yang memamerkan koleksi benda
+                      antik seperti gamelan, wayang, dan batik, serta
+                      perpustakaan dengan berbagai koleksi buku.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Berpartisipasi dalam kegiatan rekreasi</span
+                      >: Ada berbagai wahana seperti perahu, becak hias, kereta
+                      putar, dan permainan anak seperti kereta mini, pancing
+                      ikan, dan balon lompat.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Menonton pertunjukan seni dan budaya</span
+                      >: Taman Balekambang sering mengadakan pertunjukan
+                      ketoprak, Ramayana, dan pertunjukan seni lainnya.
+                    </li>
+                    <li>
+                      <span class="font-bold">Berfoto di spot-spot menarik</span
+                      >: Taman ini memiliki berbagai spot yang instagramable
+                      seperti Kolam Partini dengan air mancur yang indah dan Sky
+                      Walk.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Museum Radya Pustaka -->
+      <div id="museum-radya-pustaka" class="tab-content hidden">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Museum Radya Pustaka
+              </h2>
+              <figure id="autoCarouselMuseumRadyaPustaka">
+                <img
+                  src="images/wisata/museum-radya-pustaka/museum-radya-pustaka-1.jpg"
+                  alt="Museum Radya Pustaka"
+                  class="aspect-video rounded-lg"
+                  id="museum-radya-pustaka-1"
+                />
+                <img
+                  src="images/wisata/museum-radya-pustaka/museum-radya-pustaka-2.jpg"
+                  alt="Museum Radya Pustaka"
+                  class="aspect-video rounded-lg"
+                  id="museum-radya-pustaka-2"
+                />
+                <img
+                  src="images/wisata/museum-radya-pustaka/museum-radya-pustaka-3.jpg"
+                  alt="Museum Radya Pustaka"
+                  class="aspect-video rounded-lg"
+                  id="museum-radya-pustaka-3"
+                />
+                <img
+                  src="images/wisata/museum-radya-pustaka/museum-radya-pustaka-4.jpg"
+                  alt="Museum Radya Pustaka"
+                  class="aspect-video rounded-lg"
+                  id="museum-radya-pustaka-4"
+                />
+                <img
+                  src="images/wisata/museum-radya-pustaka/museum-radya-pustaka-5.jpg"
+                  alt="Museum Radya Pustaka"
+                  class="aspect-video rounded-lg"
+                  id="museum-radya-pustaka-5"
+                />
+
+                <script>
+                  const slidesMuseumRadyaPustaka = [
+                    "museum-radya-pustaka-1",
+                    "museum-radya-pustaka-2",
+                    "museum-radya-pustaka-3",
+                    "museum-radya-pustaka-4",
+                    "museum-radya-pustaka-5",
+                  ];
+                  let currentIndexMuseumRadyaPustaka = 0;
+                  let intervalMuseumRadyaPustaka;
+
+                  function showSlideMuseumRadyaPustaka(index) {
+                    if (index < 0) index = slidesMuseumRadyaPustaka.length - 1;
+                    if (index >= slidesMuseumRadyaPustaka.length) index = 0;
+
+                    for (let i = 0; i < slidesMuseumRadyaPustaka.length; i++) {
+                      const slideMuseumRadyaPustaka = document.getElementById(
+                        slidesMuseumRadyaPustaka[i],
+                      );
+                      slideMuseumRadyaPustaka.style.display = "none";
+                    }
+
+                    const activeSlideMuseumRadyaPustaka =
+                      document.getElementById(slidesMuseumRadyaPustaka[index]);
+                    activeSlideMuseumRadyaPustaka.style.display = "block";
+
+                    currentIndexMuseumRadyaPustaka = index;
+                  }
+
+                  function autoSlideMuseumRadyaPustaka() {
+                    showSlideMuseumRadyaPustaka(
+                      currentIndexMuseumRadyaPustaka + 1,
+                    );
+                  }
+
+                  function restartAutoSlideMuseumRadyaPustaka() {
+                    clearInterval(intervalMuseumRadyaPustaka);
+                    intervalMuseumRadyaPustaka = setInterval(
+                      autoSlideMuseumRadyaPustaka,
+                      1000,
+                    );
+                  }
+
+                  document
+                    .getElementById("autoCarouselMuseumRadyaPustaka")
+                    .addEventListener("mouseenter", () => {
+                      clearInterval(intervalMuseumRadyaPustaka);
+                    });
+
+                  document
+                    .getElementById("autoCarouselMuseumRadyaPustaka")
+                    .addEventListener("mouseleave", () => {
+                      restartAutoSlideMuseumRadyaPustaka();
+                    });
+
+                  document.addEventListener("DOMContentLoaded", () => {
+                    showSlideMuseumRadyaPustaka(0);
+                    restartAutoSlideMuseumRadyaPustaka();
+                  });
+                </script>
+              </figure>
+              <div class="h-64 w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0600208521437!2d110.81187907411693!3d-7.568435674750304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a167df7d7ef85%3A0xef8dc6d8163ff9c0!2sMuseum%20Radya%20Pustaka!5e0!3m2!1sid!2sid!4v1747107616599!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="rounded-lg"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Tentang Museum Radya Pustaka
+              </h2>
+
+              <div class="space-y-4 rounded-xl">
+                <div
+                  class="glass bg-base-100/70 space-y-4 rounded-xl p-4 text-justify"
+                >
+                  <p>
+                    Museum ini didirikan pada masa pemerintahan Pakubuwono IX
+                    oleh Kanjeng Raden Adipati Sosrodiningrat IV di dalem
+                    Kepatihan pada tanggal 28 Oktober 1890. Kanjeng Raden
+                    Adipati Sosrodiningrat IV pernah menjabat sebagai Patih
+                    Pakubuwono IX dan Pakubuwono X.
+                  </p>
+                  <p>
+                    Museum ini lalu dipindahkan ke lokasinya sekarang ini,
+                    Gedung Museum Radyapustaka di Jalan Slamet Riyadi,
+                    Surakarta, pada 1 Januari 1913. Kala itu gedung museum
+                    merupakan rumah kediaman seorang warga Belanda bernama
+                    Johannes Busselaar.
+                  </p>
+                  <p>
+                    Museum Radya Pustaka tidak berada di bawah naungan Dinas
+                    Purbakala maupun Dinas Pariwisata Pemerintahan Daerah
+                    setempat namun berstatus yayasan. Yayasan ini bernama
+                    Yayasan Paheman Radyapustaka Surakarta dan dibentuk pada
+                    tahun 1951. Lalu untuk tugas pelaksanaan sehari-hari
+                    dibentuk presidium yang pertama kalinya pada tahun 1966
+                    diketahui oleh Go Tik Swan atau juga dikenal dengan nama
+                    K.R.T. Hardjonagoro.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Informasi</h2>
+              <div class="space-y-4 rounded-xl">
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <h3 class="mb-2 text-xl font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Senin: Tutup</li>
+                    <li>Selasa-Minggu: 08.00-16.00</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Tiket:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Umum: Rp,10.000</li>
+                    <li>Pelajar: Rp,7.500</li>
+                    <li>Pelajar KIA (Hari Libur): Rp,5.000</li>
+                    <li>Rombongan (Minimal 50 Orang): Rp,7.500</li>
+                    <li>Rombongan Pelajar (Minimal 50 Orang): Rp,5.000</li>
+                    <li>Wisatawan Asing: Rp,20.000</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Fasilitas:</h3>
+                  <ul class="ml-5 list-disc space-y-2">
+                    <li>
+                      <span class="font-bold"> Pusaka Keraton Mataram</span>:
+                      Museum ini menyimpan berbagai artefak penting dari Keraton
+                      Mataram, termasuk buku-buku kuno, senjata, mata uang, dan
+                      keramik.
+                    </li>
+                    <li>
+                      <span class="font-bold">Manuskrip Kuno</span>: Koleksi
+                      manuskrip kuno seperti Serat Centhini dan Serat Candra
+                      menjadi daya tarik tersendiri bagi pengunjung yang
+                      tertarik dengan sejarah dan sastra Jawa.
+                    </li>
+                    <li>
+                      <span class="font-bold">Canthik Rajamala</span>: Ornamen
+                      kepala kapal yang terbuat dari kayu dengan wujud Rajamala,
+                      tokoh pewayangan.
+                    </li>
+                    <li>
+                      <span class="font-bold">Arca-arca Mataram Kuno</span>:
+                      Berbagai arca, mulai dari arca Ganesha, Siwa Mahadewa,
+                      hingga arca mini.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Hadiah dari Napoleon Bonaparte</span
+                      >: Museum ini juga menyimpan porselen yang pernah menjadi
+                      hadiah dari Napoleon Bonaparte untuk Susuhunan Pakubuwono
+                      V.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Museum Keris Nusantara -->
+      <div id="museum-keris-nusantara" class="tab-content hidden">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Museum Keris Nusantara
+              </h2>
+              <figure id="autoCarouselMuseumKerisNusantara">
+                <img
+                  src="images/wisata/museum-keris-nusantara/museum-keris-nusantara-1.jpg"
+                  alt="Museum Keris Nusantara"
+                  class="aspect-video rounded-lg"
+                  id="museum-keris-nusantara-1"
+                />
+                <img
+                  src="images/wisata/museum-keris-nusantara/museum-keris-nusantara-2.jpg"
+                  alt="Museum Keris Nusantara"
+                  class="aspect-video rounded-lg"
+                  id="museum-keris-nusantara-2"
+                />
+                <img
+                  src="images/wisata/museum-keris-nusantara/museum-keris-nusantara-3.jpg"
+                  alt="Museum Keris Nusantara"
+                  class="aspect-video rounded-lg"
+                  id="museum-keris-nusantara-3"
+                />
+                <img
+                  src="images/wisata/museum-keris-nusantara/museum-keris-nusantara-4.jpg"
+                  alt="Museum Keris Nusantara"
+                  class="aspect-video rounded-lg"
+                  id="museum-keris-nusantara-4"
+                />
+                <img
+                  src="images/wisata/museum-keris-nusantara/museum-keris-nusantara-5.jpg"
+                  alt="Museum Keris Nusantara"
+                  class="aspect-video rounded-lg"
+                  id="museum-keris-nusantara-5"
+                />
+
+                <script>
+                  const slidesMuseumKerisNusantara = [
+                    "museum-keris-nusantara-1",
+                    "museum-keris-nusantara-2",
+                    "museum-keris-nusantara-3",
+                    "museum-keris-nusantara-4",
+                    "museum-keris-nusantara-5",
+                  ];
+                  let currentIndexMuseumKerisNusantara = 0;
+                  let intervalMuseumKerisNusantara;
+
+                  function showSlideMuseumKerisNusantara(index) {
+                    if (index < 0)
+                      index = slidesMuseumKerisNusantara.length - 1;
+                    if (index >= slidesMuseumKerisNusantara.length) index = 0;
+
+                    for (
+                      let i = 0;
+                      i < slidesMuseumKerisNusantara.length;
+                      i++
+                    ) {
+                      const slideMuseumKerisNusantara = document.getElementById(
+                        slidesMuseumKerisNusantara[i],
+                      );
+                      slideMuseumKerisNusantara.style.display = "none";
+                    }
+
+                    const activeSlideMuseumKerisNusantara =
+                      document.getElementById(
+                        slidesMuseumKerisNusantara[index],
+                      );
+                    activeSlideMuseumKerisNusantara.style.display = "block";
+
+                    currentIndexMuseumKerisNusantara = index;
+                  }
+
+                  function autoSlideMuseumKerisNusantara() {
+                    showSlideMuseumKerisNusantara(
+                      currentIndexMuseumKerisNusantara + 1,
+                    );
+                  }
+
+                  function restartAutoSlideMuseumKerisNusantara() {
+                    clearInterval(intervalMuseumKerisNusantara);
+                    intervalMuseumKerisNusantara = setInterval(
+                      autoSlideMuseumKerisNusantara,
+                      1000,
+                    );
+                  }
+
+                  document
+                    .getElementById("autoCarouselMuseumKerisNusantara")
+                    .addEventListener("mouseenter", () => {
+                      clearInterval(intervalMuseumKerisNusantara);
+                    });
+
+                  document
+                    .getElementById("autoCarouselMuseumKerisNusantara")
+                    .addEventListener("mouseleave", () => {
+                      restartAutoSlideMuseumKerisNusantara();
+                    });
+
+                  document.addEventListener("DOMContentLoaded", () => {
+                    showSlideMuseumKerisNusantara(0);
+                    restartAutoSlideMuseumKerisNusantara();
+                  });
+                </script>
+              </figure>
+              <div class="h-64 w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126561.74587694019!2d110.66661224335938!3d-7.569031199999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a167e29505d91%3A0x9129ae0450226c4f!2sMuseum%20Keris%20Nusantara!5e0!3m2!1sid!2sid!4v1747108233206!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="rounded-lg"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Tentang Museum Keris Nusantara
+              </h2>
+
+              <div class="space-y-4 rounded-xl">
+                <div
+                  class="glass bg-base-100/70 space-y-4 rounded-xl p-4 text-justify"
+                >
+                  <p>
+                    Museum Keris Nusantara merupakan sebuah museum yang dibangun
+                    oleh Direktorat Jenderal Kebudayaan, Kementerian Pendidikan
+                    dan Kebudayaan melalui Direktorat Pelestarian Cagar Budaya
+                    dan Permuseuman sejak 2013 lalu diresmikan oleh Presiden
+                    Republik Indonesia, Joko Widodo pada tanggal 9 Agustus 2017.
+                  </p>
+                  <p>
+                    Museum Keris berada di lokasi eks gedung Rumah Sakit Jiwa
+                    Mangunjayan, dan direncanakan akan menyatu dengan ruang
+                    terbuka hijau (RTH) di kawasan Stadion R Maladi Sriwedari.
+                    Museum Keris dibangun dengan program Tugas Pembantuan, yang
+                    pelaksanaannya dilakukan oleh Dinas Kebudayaan dan
+                    Pariwisata Kota Surakarta (sekarang Dinas Kebudayaan).
+                  </p>
+                  <p>
+                    Museum Keris Nusantara menyimpan sekitar 409 koleksi keris
+                    berbagai jenis dan ukuran. Museum ini juga mengkoleksi 38
+                    tombak dan benda-benda pusaka bersejarah lainnya, dilengkapi
+                    dengan video visual mengenai perjalanan keris di indonesia
+                    dan juga ruangan sebagai pusat pembelajaran keris bagi
+                    pengunjung.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Informasi</h2>
+              <div class="space-y-4 rounded-xl">
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <h3 class="mb-2 text-xl font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Senin: Tutup</li>
+                    <li>Selasa-Minggu: 08.00-16.00</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Tiket:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Umum: Rp,10.000</li>
+                    <li>Pelajar: Rp,7.500</li>
+                    <li>Pelajar KIA (Hari Libur): Rp,5.000</li>
+                    <li>Rombongan (Minimal 50 Orang): Rp,7.500</li>
+                    <li>Rombongan Pelajar (Minimal 50 Orang): Rp,5.000</li>
+                    <li>Wisatawan Asing: Rp,20.000</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Fasilitas:</h3>
+                  <ul class="ml-5 list-disc space-y-2">
+                    <li>
+                      <span class="font-bold">Koleksi keris</span>: Sekitar 409
+                      koleksi keris dari berbagai daerah di Indonesia.
+                    </li>
+                    <li>
+                      <span class="font-bold">Arsitektur unik</span>: Gaya
+                      arsitektur candi dengan sentuhan modern.
+                    </li>
+                    <li>
+                      <span class="font-bold">Pembelajaran tentang keris</span>:
+                      Sejarah, jenis, dan fungsi keris.
+                    </li>
+                    <li>
+                      <span class="font-bold">Hibah Keris Joko Widodo</span>:
+                      Keris yang pernah dimiliki oleh Presiden Joko Widodo.
+                    </li>
+                    <li>
+                      <span class="font-bold">Suasana magis</span>: Backsound
+                      gending Jawa.
+                    </li>
+                    <li>
+                      <span class="font-bold">Penghargaan UNESCO</span>:
+                      Sertifikat untuk menjaga kekayaan budaya lokal.
+                    </li>
+                    <li>
+                      <span class="font-bold">Perpaduan tradisi dan modern</span
+                      >: Arsitektur, fasilitas, dan tampilan koleksi.
+                    </li>
+                    <li>
+                      <span class="font-bold"
+                        >Pembelajaran untuk generasi muda</span
+                      >: Melestarikan nilai sejarah dan budaya keris
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taman Sriwedari -->
+      <div id="taman-sriwedari" class="tab-content hidden">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Taman Sriwedari
+              </h2>
+              <figure id="autoCarouselTamanSriwedari">
+                <img
+                  src="images/wisata/taman-sriwedari/taman-sriwedari-1.jpg"
+                  alt="Taman Sriwedari"
+                  class="aspect-video rounded-lg"
+                  id="taman-sriwedari-1"
+                />
+                <img
+                  src="images/wisata/taman-sriwedari/taman-sriwedari-2.jpg"
+                  alt="Taman Sriwedari"
+                  class="aspect-video rounded-lg"
+                  id="taman-sriwedari-2"
+                />
+                <img
+                  src="images/wisata/taman-sriwedari/taman-sriwedari-3.jpg"
+                  alt="Taman Sriwedari"
+                  class="aspect-video rounded-lg"
+                  id="taman-sriwedari-3"
+                />
+                <img
+                  src="images/wisata/taman-sriwedari/taman-sriwedari-4.jpg"
+                  alt="Taman Sriwedari"
+                  class="aspect-video rounded-lg"
+                  id="taman-sriwedari-4"
+                />
+                <img
+                  src="images/wisata/taman-sriwedari/taman-sriwedari-5.jpg"
+                  alt="Taman Sriwedari"
+                  class="aspect-video rounded-lg"
+                  id="taman-sriwedari-5"
+                />
+
+                <script>
+                  const slidesTamanSriwedari = [
+                    "taman-sriwedari-1",
+                    "taman-sriwedari-2",
+                    "taman-sriwedari-3",
+                    "taman-sriwedari-4",
+                    "taman-sriwedari-5",
+                  ];
+                  let currentIndexTamanSriwedari = 0;
+                  let intervalTamanSriwedari;
+
+                  function showSlideTamanSriwedari(index) {
+                    if (index < 0) index = slidesTamanSriwedari.length - 1;
+                    if (index >= slidesTamanSriwedari.length) index = 0;
+
+                    for (let i = 0; i < slidesTamanSriwedari.length; i++) {
+                      const slideTamanSriwedari = document.getElementById(
+                        slidesTamanSriwedari[i],
+                      );
+                      slideTamanSriwedari.style.display = "none";
+                    }
+
+                    const activeSlideTamanSriwedari = document.getElementById(
+                      slidesTamanSriwedari[index],
+                    );
+                    activeSlideTamanSriwedari.style.display = "block";
+
+                    currentIndexTamanSriwedari = index;
+                  }
+
+                  function autoSlideTamanSriwedari() {
+                    showSlideTamanSriwedari(currentIndexTamanSriwedari + 1);
+                  }
+
+                  function restartAutoSlideTamanSriwedari() {
+                    clearInterval(intervalTamanSriwedari);
+                    intervalTamanSriwedari = setInterval(
+                      autoSlideTamanSriwedari,
+                      1000,
+                    );
+                  }
+
+                  document
+                    .getElementById("autoCarouselTamanSriwedari")
+                    .addEventListener("mouseenter", () => {
+                      clearInterval(intervalTamanSriwedari);
+                    });
+
+                  document
+                    .getElementById("autoCarouselTamanSriwedari")
+                    .addEventListener("mouseleave", () => {
+                      restartAutoSlideTamanSriwedari();
+                    });
+
+                  document.addEventListener("DOMContentLoaded", () => {
+                    showSlideTamanSriwedari(0);
+                    restartAutoSlideTamanSriwedari();
+                  });
+                </script>
+              </figure>
+              <div class="h-64 w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.058882633801!2d110.810420474117!3d-7.568559774751724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1680a93d3af1%3A0x7e1dfa994e59efcf!2sTaman%20Sriwedari%20Surakarta!5e0!3m2!1sid!2sid!4v1747381661341!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">
+                Tentang Taman Sriwedari
+              </h2>
+
+              <div class="space-y-4 rounded-xl">
+                <div
+                  class="glass bg-base-100/70 space-y-4 rounded-xl p-4 text-justify"
+                >
+                  <p>
+                    Taman Sriwedari (bahasa Jawa: ꦒꦼꦝꦺꦴꦁꦮꦪꦁꦮꦺꦴꦁꦯꦿꦶꦮꦼꦢꦫꦶ,
+                    translit. Gedhong Wayang Wong Sriwedari) adalah sebuah
+                    kompleks taman yang terletak di Kecamatan Laweyan, Kota
+                    Surakarta. Sejak era Pakubuwana X, Taman Sriwedari menjadi
+                    tempat diselenggarakannya tradisi hiburan Malam Selikuran.
+                    Sriwedari juga pernah menjadi lokasi penyelenggaraan PON I
+                    pada tahun 1948. Saat ini kepemilikan Taman Sriwedari
+                    menjadi sengketa antara Pemerintah Kota Surakarta dengan
+                    ahli waris keluarga KRMH Wirjodiningrat.
+                  </p>
+                  <p>
+                    Taman Sriwedari dan Segaran dibangun oleh Pakubuwana X yang
+                    merupakan adik ipar KRMT Wirjodiningrat. Almarhum KRMT
+                    Wirjodiningrat pada 13 Juli 1877 membeli tanah seluas +/-
+                    99.889 M2 dari Tuan Johanes Booslar dan bukti kepemilikanya
+                    adalah Eigendom No:295 yakni eigendom adalah hak milik
+                    mutlak. Pembelian tanah tersebut dilakukan dengan Akta Jual
+                    Beli No:10 tanggal 13 Juli 1877 dibuat Pieter Jacobus
+                    Notaris Surakarta, kemudian dibalik nama dengan akte
+                    Assisten Residentie van Surakarta No:59 tgl 5 Desember 1877.
+                    Akte Jual Beli dibuat Notaris Pieter Jacobus, lalu dikuatkan
+                    Putusan MA No:3000-K/Sip/1981 dan No:3249-K/Pdt/2012.
+                    Tanah/bangunan tersebut dipinjam Keraton Solo, lalu disewa
+                    Pemkot Solo dan sebagian dari tanah tersebut yakni seluas
+                    3.5 ha diterbitkan SHGB. Namun ketika HGB akan diperpanjang
+                    tidak dikabulkan oleh BPN. Selanjutnya ahli waris minta
+                    kepada Pemkot agar tanah tersebut dikembalikan namun tidak
+                    direspons Pemkot Surakarta.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden rounded-xl shadow-xl">
+            <div class="card-body glass p-6 backdrop-blur">
+              <h2 class="card-title mb-4 text-2xl font-bold">Informasi</h2>
+              <div class="space-y-4 rounded-xl">
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <h3 class="mb-2 text-xl font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: Buka 24 jam</li>
+                  </ul>
+                </div>
+
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Tiket:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Umum: Rp,7.000</li>
+                  </ul>
+                </div>
+                <div class="glass bg-base-100/70 rounded-xl p-4">
+                  <h3 class="mb-2 text-xl font-bold">Fasilitas:</h3>
+                  <ul class="ml-5 list-disc space-y-2">
+                    <li>
+                      <span class="font-bold">Mencoba Berbagai Wahana</span>:
+                      Mengunjungi bersama keluarga apalagi anak-anak, tentu akan
+                      sangat menyenangkan mencoba wahana bermainnya. Wahana
+                      bermain di sini juga dapat dicoba untuk anak-anak atau
+                      dewasa.
+                    </li>
+                    <li>
+                      <span class="font-bold">Memberi Makan Rusa </span>:
+                      Berinteraksi dengan hewan liar dan jinak ini tentu akan
+                      menjadi pengalaman tak terlupakan.
+                    </li>
+                    <li>
+                      <span class="font-bold">Menyaksikan Pertunjukan Seni</span
+                      >: Taman Sriwedari sudah dilengkapi bangunan bernama
+                      Gedung Wayang Orang. Pengunjung dapat menyaksikan
+                      pertunjukan wayang orang yang masih rutin digelar hingga
+                      kini.
+                    </li>
+                    <li>
+                      <span class="font-bold">Mengabadikan Foto </span>:
+                      Kegiatan berfoto bersama keluarga menjadi hal yang seru
+                      untuk dilakukan. Pasalnya, Taman Sriwedari terdapat
+                      spot-spot menarik untuk mendapatkan gambar yang bagus.
+                    </li>
+                    <li>
+                      <span class="font-bold">Memancing di Danau</span>: Danau
+                      yang ada di taman ternyata boleh digunakan untuk
+                      memancing. Hal ini tentu menjadi kabar gembira bagi yang
+                      suka memancing ikan.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          document.querySelector(".tab-active").click();
+        });
+
+        function openDestination(evt, destinationName) {
+          var tabContents = document.getElementsByClassName("tab-content");
+          for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = "none";
+          }
+
+          var tabs = document.getElementsByClassName("tab");
+          for (var i = 0; i < tabs.length; i++) {
+            tabs[i].className = tabs[i].className.replace(" tab-active", "");
+          }
+
+          document.getElementById(destinationName).style.display = "block";
+          evt.currentTarget.className += " tab-active";
+        }
+      </script>
+    </section>
+
+    <!-- Kuliner -->
+    <section id="kuliner" class="bg-base-200 px-4 py-16">
+      <div class="mb-12 mt-4 text-center">
+        <h2 class="text-primary text-4xl font-bold">Kuliner</h2>
+      </div>
+
+      <div
+        class="carousel w-full rounded-lg shadow-xl"
+        id="autoCarouselKuliner"
+      >
+        <!-- Restoran Kusuma Sari -->
+        <div id="restoran-kusuma-sari" class="carousel-item relative w-full">
+          <div class="m-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Restoran Kusuma Sari
+                </h2>
+                <figure id="autoCarouselRestoranKusumaSari">
+                  <img
+                    src="images/kuliner/restoran-kusuma-sari/restoran-kusuma-sari-1.jpg"
+                    alt="Restoran Kusuma Sari"
+                    class="aspect-video rounded-lg"
+                    id="restoran-kusuma-sari-1"
+                  />
+                  <img
+                    src="images/kuliner/restoran-kusuma-sari/restoran-kusuma-sari-2.jpg"
+                    alt="Restoran Kusuma Sari"
+                    class="aspect-video rounded-lg"
+                    id="restoran-kusuma-sari-2"
+                  />
+                  <img
+                    src="images/kuliner/restoran-kusuma-sari/restoran-kusuma-sari-3.jpg"
+                    alt="Restoran Kusuma Sari"
+                    class="aspect-video rounded-lg"
+                    id="restoran-kusuma-sari-3"
+                  />
+
+                  <script>
+                    const slidesRestoranKusumaSari = [
+                      "restoran-kusuma-sari-1",
+                      "restoran-kusuma-sari-2",
+                      "restoran-kusuma-sari-3",
+                    ];
+                    let currentIndexRestoranKusumaSari = 0;
+                    let intervalRestoranKusumaSari;
+
+                    function showSlideRestoranKusumaSari(index) {
+                      if (index < 0)
+                        index = slidesRestoranKusumaSari.length - 1;
+                      if (index >= slidesRestoranKusumaSari.length) index = 0;
+
+                      for (
+                        let i = 0;
+                        i < slidesRestoranKusumaSari.length;
+                        i++
+                      ) {
+                        const slideRestoranKusumaSari = document.getElementById(
+                          slidesRestoranKusumaSari[i],
+                        );
+                        slideRestoranKusumaSari.style.display = "none";
+                      }
+
+                      const activeSlideRestoranKusumaSari =
+                        document.getElementById(
+                          slidesRestoranKusumaSari[index],
+                        );
+                      activeSlideRestoranKusumaSari.style.display = "block";
+
+                      currentIndexRestoranKusumaSari = index;
+                    }
+
+                    function autoSlideRestoranKusumaSari() {
+                      showSlideRestoranKusumaSari(
+                        currentIndexRestoranKusumaSari + 1,
+                      );
+                    }
+
+                    function restartAutoSlideRestoranKusumaSari() {
+                      clearInterval(intervalRestoranKusumaSari);
+                      intervalRestoranKusumaSari = setInterval(
+                        autoSlideRestoranKusumaSari,
+                        1000,
+                      );
+                    }
+
+                    document
+                      .getElementById("autoCarouselRestoranKusumaSari")
+                      .addEventListener("mouseenter", () => {
+                        clearInterval(intervalRestoranKusumaSari);
+                      });
+
+                    document
+                      .getElementById("autoCarouselRestoranKusumaSari")
+                      .addEventListener("mouseleave", () => {
+                        restartAutoSlideRestoranKusumaSari();
+                      });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                      showSlideRestoranKusumaSari(0);
+                      restartAutoSlideRestoranKusumaSari();
+                    });
+                  </script>
+                </figure>
+                <div class="h-32 w-full overflow-hidden rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0352700479457!2d110.824163!3d-7.571133799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1663c84e8f8d%3A0xbd6aa1ae20cff820!2sRestoran%20Kusuma%20Sari%20Slamet%20Riyadi!5e0!3m2!1sid!2sid!4v1747110532811!5m2!1sid!2sid"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Tentang Restoran Kusuma Sari
+                </h2>
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <p>
+                    Nikmati makanan Khas Jawa terkhusus nya kuliner dari solo
+                    direstoran legendaris ini. Restoran ini menyediakan makanan
+                    seperti Sop Matahari, Selat Solo, Sosis Solo, dan aneka
+                    makanan lainnya dengan rasa bintang 5.
+                  </p>
+                  <h3 class="font-bold">Website:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      <a
+                        href="https://linktr.ee/kusumasarisolo"
+                        target="_blank"
+                        class="text-primary"
+                        >https://linktr.ee/kusumasarisolo</a
+                      >
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Alamat:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      Jl. Slamet Riyadi No.111, Kemlayan, Kec. Serengan, Kota
+                      Surakarta, Jawa Tengah 57151 (utama)
+                    </li>
+                    <li>
+                      <a
+                        href="https://maps.app.goo.gl/C4jLiDKHMFTUafTt6"
+                        target="_blank"
+                        class="text-primary"
+                      >
+                        Solo Paragon, Lantai RF, Mangkubumen, Kec. Banjarsari,
+                        Kota Surakarta, Jawa Tengah 57139 (cabang ke 2)</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://maps.app.goo.gl/QNpqiV3BsoKVqTQk6"
+                        target="_blank"
+                        class="text-primary"
+                        >Jl. Yos Sudarso No.12, Kauman, Kec. Serengan, Kota
+                        Surakarta, Jawa Tengah 57151 (cabang ke 3)</a
+                      >
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: 09.00–22.00</li>
+                  </ul>
+                  <h3 class="font-bold">Kisaran Harga:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Makanan mulai Rp,25.000</li>
+                    <li>Minuman mulai Rp,6.000</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(-1)"
+            >
+              ❮
+            </button>
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(1)"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+
+        <!-- Pecel Lele Gandewa -->
+        <div id="pecel-lele-gandewa" class="carousel-item relative w-full">
+          <div class="m-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Pecel Lele Gandewa
+                </h2>
+                <figure id="autoCarouselPecelLeleGandewa">
+                  <img
+                    src="images/kuliner/pecel-lele-gandewa/pecel-lele-gandewa-1.jpg"
+                    alt="Pecel Lele Gandewa"
+                    class="aspect-video rounded-lg"
+                    id="pecel-lele-gandewa-1"
+                  />
+                  <img
+                    src="images/kuliner/pecel-lele-gandewa/pecel-lele-gandewa-2.jpg"
+                    alt="Pecel Lele Gandewa"
+                    class="aspect-video rounded-lg"
+                    id="pecel-lele-gandewa-2"
+                  />
+                  <img
+                    src="images/kuliner/pecel-lele-gandewa/pecel-lele-gandewa-3.jpg"
+                    alt="Pecel Lele Gandewa"
+                    class="aspect-video rounded-lg"
+                    id="pecel-lele-gandewa-3"
+                  />
+
+                  <script>
+                    const slidesPecelLeleGandewa = [
+                      "pecel-lele-gandewa-1",
+                      "pecel-lele-gandewa-2",
+                      "pecel-lele-gandewa-3",
+                    ];
+                    let currentIndexPecelLeleGandewa = 0;
+                    let intervalPecelLeleGandewa;
+
+                    function showSlidePecelLeleGandewa(index) {
+                      if (index < 0) index = slidesPecelLeleGandewa.length - 1;
+                      if (index >= slidesPecelLeleGandewa.length) index = 0;
+
+                      for (let i = 0; i < slidesPecelLeleGandewa.length; i++) {
+                        const slidePecelLeleGandewa = document.getElementById(
+                          slidesPecelLeleGandewa[i],
+                        );
+                        slidePecelLeleGandewa.style.display = "none";
+                      }
+
+                      const activeSlidePecelLeleGandewa =
+                        document.getElementById(slidesPecelLeleGandewa[index]);
+                      activeSlidePecelLeleGandewa.style.display = "block";
+
+                      currentIndexPecelLeleGandewa = index;
+                    }
+
+                    function autoSlidePecelLeleGandewa() {
+                      showSlidePecelLeleGandewa(
+                        currentIndexPecelLeleGandewa + 1,
+                      );
+                    }
+
+                    function restartAutoSlidePecelLeleGandewa() {
+                      clearInterval(intervalPecelLeleGandewa);
+                      intervalPecelLeleGandewa = setInterval(
+                        autoSlidePecelLeleGandewa,
+                        1000,
+                      );
+                    }
+
+                    document
+                      .getElementById("autoCarouselPecelLeleGandewa")
+                      .addEventListener("mouseenter", () => {
+                        clearInterval(intervalPecelLeleGandewa);
+                      });
+
+                    document
+                      .getElementById("autoCarouselPecelLeleGandewa")
+                      .addEventListener("mouseleave", () => {
+                        restartAutoSlidePecelLeleGandewa();
+                      });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                      showSlidePecelLeleGandewa(0);
+                      restartAutoSlidePecelLeleGandewa();
+                    });
+                  </script>
+                </figure>
+                <div class="h-32 w-full overflow-hidden rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.083228754548!2d110.81077817425339!3d-7.565904874721835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a17415791f77b%3A0x1c69d72f1e0911d5!2sPecel%20Lele%20Gandewa%20Sriwedari!5e0!3m2!1sid!2sid!4v1746894748503!5m2!1sid!2sid"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Tentang Pecel Lele Gandewa
+                </h2>
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <p>
+                    Salah satu warung Pecel Lele yang cukup terkenal di kota
+                    Surakarta memiliki beberapa menu seperti Paket Lele
+                    Goreng/Bakar, Paket Ayam Goreng/Bakar, Paket Kakap
+                    Goreng/Bakar, Paket Udang Goreng selain itu ada juga Menu
+                    Mie Dok-Dok/Oseng, dan olahan jeroan ayam seperti hati dan
+                    ampela.
+                  </p>
+                  <h3 class="font-bold">Alamat:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      Jl. Tirtosari No.5, Sriwedari, Kec. Laweyan, Kota
+                      Surakarta, Jawa Tengah 57141
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: 15.00–23.00</li>
+                  </ul>
+                  <h3 class="font-bold">Kisaran Harga:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Makanan mulai Rp,20.000</li>
+                    <li>Minuman mulai Rp,3.000</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(-1)"
+            >
+              ❮
+            </button>
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(1)"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+
+        <!-- Nasi Liwet Bu Wongso Lemu -->
+        <div
+          id="nasi-liwet-bu-wongso-lemu"
+          class="carousel-item relative w-full"
+        >
+          <div class="m-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Nasi Liwet Bu Wongso Lemu
+                </h2>
+                <figure id="autoCarouselNasiLiwetBuWongsoLemu">
+                  <img
+                    src="images/kuliner/nasi-liwet-bu-wongso-lemu/nasi-liwet-bu-wongso-lemu-1.jpg"
+                    alt="Nasi Liwet Bu Wongso Lemu"
+                    class="aspect-video rounded-lg"
+                    id="nasi-liwet-bu-wongso-lemu-1"
+                  />
+                  <img
+                    src="images/kuliner/nasi-liwet-bu-wongso-lemu/nasi-liwet-bu-wongso-lemu-2.jpg"
+                    alt="Nasi Liwet Bu Wongso Lemu"
+                    class="aspect-video rounded-lg"
+                    id="nasi-liwet-bu-wongso-lemu-2"
+                  />
+                  <img
+                    src="images/kuliner/nasi-liwet-bu-wongso-lemu/nasi-liwet-bu-wongso-lemu-3.jpg"
+                    alt="Nasi Liwet Bu Wongso Lemu"
+                    class="aspect-video rounded-lg"
+                    id="nasi-liwet-bu-wongso-lemu-3"
+                  />
+
+                  <script>
+                    const slidesNasiLiwetBuWongsoLemu = [
+                      "nasi-liwet-bu-wongso-lemu-1",
+                      "nasi-liwet-bu-wongso-lemu-2",
+                      "nasi-liwet-bu-wongso-lemu-3",
+                    ];
+                    let currentIndexNasiLiwetBuWongsoLemu = 0;
+                    let intervalNasiLiwetBuWongsoLemu;
+
+                    function showSlideNasiLiwetBuWongsoLemu(index) {
+                      if (index < 0)
+                        index = slidesNasiLiwetBuWongsoLemu.length - 1;
+                      if (index >= slidesNasiLiwetBuWongsoLemu.length)
+                        index = 0;
+
+                      for (
+                        let i = 0;
+                        i < slidesNasiLiwetBuWongsoLemu.length;
+                        i++
+                      ) {
+                        const slideNasiLiwetBuWongsoLemu =
+                          document.getElementById(
+                            slidesNasiLiwetBuWongsoLemu[i],
+                          );
+                        slideNasiLiwetBuWongsoLemu.style.display = "none";
+                      }
+
+                      const activeSlideNasiLiwetBuWongsoLemu =
+                        document.getElementById(
+                          slidesNasiLiwetBuWongsoLemu[index],
+                        );
+                      activeSlideNasiLiwetBuWongsoLemu.style.display = "block";
+
+                      currentIndexNasiLiwetBuWongsoLemu = index;
+                    }
+
+                    function autoSlideNasiLiwetBuWongsoLemu() {
+                      showSlideNasiLiwetBuWongsoLemu(
+                        currentIndexNasiLiwetBuWongsoLemu + 1,
+                      );
+                    }
+
+                    function restartAutoSlideNasiLiwetBuWongsoLemu() {
+                      clearInterval(intervalNasiLiwetBuWongsoLemu);
+                      intervalNasiLiwetBuWongsoLemu = setInterval(
+                        autoSlideNasiLiwetBuWongsoLemu,
+                        1000,
+                      );
+                    }
+
+                    document
+                      .getElementById("autoCarouselNasiLiwetBuWongsoLemu")
+                      .addEventListener("mouseenter", () => {
+                        clearInterval(intervalNasiLiwetBuWongsoLemu);
+                      });
+
+                    document
+                      .getElementById("autoCarouselNasiLiwetBuWongsoLemu")
+                      .addEventListener("mouseleave", () => {
+                        restartAutoSlideNasiLiwetBuWongsoLemu();
+                      });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                      showSlideNasiLiwetBuWongsoLemu(0);
+                      restartAutoSlideNasiLiwetBuWongsoLemu();
+                    });
+                  </script>
+                </figure>
+                <div class="h-32 w-full overflow-hidden rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.049281558208!2d110.8234842!3d-7.569606499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a16626d994307%3A0xba9952ad4ceeeafa!2sNasi%20Liwet%20Bu%20Wongso%20Lemu!5e0!3m2!1sid!2sid!4v1746929241370!5m2!1sid!2sid"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Tentang Nasi Liwet Bu Wongso Lemu
+                </h2>
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <p>
+                    Warung Nasi Liwet legendaris di Kota Surakarta yang buka
+                    sejak 1950, menyediakan menu nasi liwet dengan berbagai
+                    pilihan seperti Nasi Liwet 1/2 telur dengan Suwiran Ayam,
+                    Nasi Liwet 1 telur dengan Suwiran Ayam, Nasi Liwet 1/2 telur
+                    dengan jeroan ayam (seperti uritan telur, ati, ampela) atau
+                    dengan bagian tubuh ayam (seperti dada, paha, dan sayap).
+                  </p>
+                  <h3 class="font-bold">Alamat:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      Jl. Teuku Umar, Keprabon, Kec. Banjarsari, Kota Surakarta,
+                      Jawa Tengah 57131
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Senin–Sabtu: 16.00–01.00</li>
+                    <li>Minggu: 16.00–00.00</li>
+                  </ul>
+                  <h3 class="font-bold">Kisaran Harga:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Makanan mulai Rp,20.000</li>
+                    <li>Minuman mulai Rp,3.000</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(-1)"
+            >
+              ❮
+            </button>
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(1)"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+
+        <!-- Sate Kambing Mbok Galak -->
+        <div id="sate-kambing-mbok-galak" class="carousel-item relative w-full">
+          <div class="m-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Sate Kambing Mbok Galak
+                </h2>
+                <figure id="autoCarouselSateKambingMbokGalak">
+                  <img
+                    src="images/kuliner/sate-kambing-mbok-galak/sate-kambing-mbok-galak-1.jpg"
+                    alt="Sate Kambing Mbok Galak"
+                    class="aspect-video rounded-lg"
+                    id="sate-kambing-mbok-galak-1"
+                  />
+                  <img
+                    src="images/kuliner/sate-kambing-mbok-galak/sate-kambing-mbok-galak-2.jpg"
+                    alt="Sate Kambing Mbok Galak"
+                    class="aspect-video rounded-lg"
+                    id="sate-kambing-mbok-galak-2"
+                  />
+                  <img
+                    src="images/kuliner/sate-kambing-mbok-galak/sate-kambing-mbok-galak-3.jpg"
+                    alt="Sate Kambing Mbok Galak"
+                    class="aspect-video rounded-lg"
+                    id="sate-kambing-mbok-galak-3"
+                  />
+
+                  <script>
+                    const slidesSateKambingMbokGalak = [
+                      "sate-kambing-mbok-galak-1",
+                      "sate-kambing-mbok-galak-2",
+                      "sate-kambing-mbok-galak-3",
+                    ];
+                    let currentIndexSateKambingMbokGalak = 0;
+                    let intervalSateKambingMbokGalak;
+
+                    function showSlideSateKambingMbokGalak(index) {
+                      if (index < 0)
+                        index = slidesSateKambingMbokGalak.length - 1;
+                      if (index >= slidesSateKambingMbokGalak.length) index = 0;
+
+                      for (
+                        let i = 0;
+                        i < slidesSateKambingMbokGalak.length;
+                        i++
+                      ) {
+                        const slideSateKambingMbokGalak =
+                          document.getElementById(
+                            slidesSateKambingMbokGalak[i],
+                          );
+                        slideSateKambingMbokGalak.style.display = "none";
+                      }
+
+                      const activeSlideSateKambingMbokGalak =
+                        document.getElementById(
+                          slidesSateKambingMbokGalak[index],
+                        );
+                      activeSlideSateKambingMbokGalak.style.display = "block";
+
+                      currentIndexSateKambingMbokGalak = index;
+                    }
+
+                    function autoSlideSateKambingMbokGalak() {
+                      showSlideSateKambingMbokGalak(
+                        currentIndexSateKambingMbokGalak + 1,
+                      );
+                    }
+
+                    function restartAutoSlideSateKambingMbokGalak() {
+                      clearInterval(intervalSateKambingMbokGalak);
+                      intervalSateKambingMbokGalak = setInterval(
+                        autoSlideSateKambingMbokGalak,
+                        1000,
+                      );
+                    }
+
+                    document
+                      .getElementById("autoCarouselSateKambingMbokGalak")
+                      .addEventListener("mouseenter", () => {
+                        clearInterval(intervalSateKambingMbokGalak);
+                      });
+
+                    document
+                      .getElementById("autoCarouselSateKambingMbokGalak")
+                      .addEventListener("mouseleave", () => {
+                        restartAutoSlideSateKambingMbokGalak();
+                      });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                      showSlideSateKambingMbokGalak(0);
+                      restartAutoSlideSateKambingMbokGalak();
+                    });
+                  </script>
+                </figure>
+
+                <div class="h-32 w-full overflow-hidden rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.2769503350196!2d110.8062047738183!3d-7.544746792468738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708ca860493fc1%3A0x525e7cf3f7206683!2sSate%20Kambing%20Mbok%20Galak!5e0!3m2!1sid!2sid!4v1746933082286!5m2!1sid!2sid"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Tentang Sate Kambing Mbok Galak
+                </h2>
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <p>
+                    Tenang-tenang yang jual ramah kok, cuma nama warung nya agar
+                    menarik pengunjung. Warung sate kambing legendaris sejak
+                    1980 menyediakan menu aneka olahan daging kambing seperti
+                    Tongseng Kambing, Sate Buntel, Gulai Kambing, Tengkleng
+                    Kambing, Sate Kambing yang terkenal enak dan tidak amis
+                    penyuka olahan daging kambing pasti ingin kemari berkali
+                    kali.
+                  </p>
+                  <h3 class="font-bold">Alamat:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      Jl. Ki Mangun Sarkoro No.112 Sumber Banjarsari,
+                      Banyuanyar, Sumber, Kota Surakarta, Jawa Tengah 57137
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: 08.00–17.00</li>
+                  </ul>
+                  <h3 class="font-bold">Kisaran Harga:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Makanan mulai Rp,30.000</li>
+                    <li>Minuman mulai Rp,5.000</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(-1)"
+            >
+              ❮
+            </button>
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(1)"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+
+        <!-- Teh Tarik 88 -->
+        <div id="teh-tarik-88" class="carousel-item relative w-full">
+          <div class="m-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">Teh Tarik 88</h2>
+                <figure id="autoCarouselTehTarik88">
+                  <img
+                    src="images/kuliner/teh-tarik-88/teh-tarik-88-1.jpg"
+                    alt="Teh Tarik 88"
+                    class="aspect-video rounded-lg"
+                    id="teh-tarik-88-1"
+                  />
+                  <img
+                    src="images/kuliner/teh-tarik-88/teh-tarik-88-2.jpg"
+                    alt="Teh Tarik 88"
+                    class="aspect-video rounded-lg"
+                    id="teh-tarik-88-2"
+                  />
+                  <img
+                    src="images/kuliner/teh-tarik-88/teh-tarik-88-3.jpg"
+                    alt="Teh Tarik 88"
+                    class="aspect-video rounded-lg"
+                    id="teh-tarik-88-3"
+                  />
+
+                  <script>
+                    const slidesTehTarik88 = [
+                      "teh-tarik-88-1",
+                      "teh-tarik-88-2",
+                      "teh-tarik-88-3",
+                    ];
+                    let currentIndexTehTarik88 = 0;
+                    let intervalTehTarik88;
+
+                    function showSlideTehTarik88(index) {
+                      if (index < 0) index = slidesTehTarik88.length - 1;
+                      if (index >= slidesTehTarik88.length) index = 0;
+
+                      for (let i = 0; i < slidesTehTarik88.length; i++) {
+                        const slideTehTarik88 = document.getElementById(
+                          slidesTehTarik88[i],
+                        );
+                        slideTehTarik88.style.display = "none";
+                      }
+
+                      const activeSlideTehTarik88 = document.getElementById(
+                        slidesTehTarik88[index],
+                      );
+                      activeSlideTehTarik88.style.display = "block";
+
+                      currentIndexTehTarik88 = index;
+                    }
+
+                    function autoSlideTehTarik88() {
+                      showSlideTehTarik88(currentIndexTehTarik88 + 1);
+                    }
+
+                    function restartAutoSlideTehTarik88() {
+                      clearInterval(intervalTehTarik88);
+                      intervalTehTarik88 = setInterval(
+                        autoSlideTehTarik88,
+                        1000,
+                      );
+                    }
+
+                    document
+                      .getElementById("autoCarouselTehTarik88")
+                      .addEventListener("mouseenter", () => {
+                        clearInterval(intervalTehTarik88);
+                      });
+
+                    document
+                      .getElementById("autoCarouselTehTarik88")
+                      .addEventListener("mouseleave", () => {
+                        restartAutoSlideTehTarik88();
+                      });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                      showSlideTehTarik88(0);
+                      restartAutoSlideTehTarik88();
+                    });
+                  </script>
+                </figure>
+                <div class="h-32 w-full overflow-hidden rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.01092120086!2d110.81867607425337!3d-7.573787174811375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a17378f40a69f%3A0xe0b18586bb69dc64!2sTeh%20Tarik%2088!5e0!3m2!1sid!2sid!4v1746938770188!5m2!1sid!2sid"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Tentang Teh Tarik 88
+                </h2>
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <p>
+                    Sebuah tempat dimana anak muda nongkrong dan bersenda gurau
+                    menikmati segelas teh tarik tradisional dikota Surakarta
+                    menikmati indahnya malam hari. Teh Tarik ini mulai dibuka
+                    pada tahun 2023 dan selalu ramai dikunjungi anak muda.
+                    racikan yang pas dan sesuai untuk segala umur, suasana area
+                    yang strategis di tengah kota yang modern menambah nilai Teh
+                    tarik 88. beberapa menu nya seperti Teh Tarik original, Teh
+                    Tarik GreenTea, Teh Tarik Talua, Kopi Milo, Kopi Susu dan
+                    Kopi Butter. Tak hanya minuman terdapat juga makanan seperti
+                    Roti Srikaya, Roti bakar dan Kuotie.
+                  </p>
+                  <h3 class="font-bold">Alamat:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      Jl. DR. Radjiman, Kemlayan, Kec. Serengan, Kota Surakarta,
+                      Jawa Tengah
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: 17.00–00.30</li>
+                  </ul>
+                  <h3 class="font-bold">Kisaran Harga:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Makanan mulai Rp,10.000</li>
+                    <li>Minuman mulai Rp,12.000</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(-1)"
+            >
+              ❮
+            </button>
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(1)"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+
+        <!-- New Es Krim Tentrem -->
+        <div id="new-es-krim-tentrem" class="carousel-item relative w-full">
+          <div class="m-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  New Es Krim Tentrem
+                </h2>
+                <figure id="autoCarouselNewEsKrimTentrem">
+                  <img
+                    src="images/kuliner/new-es-krim-tentrem/new-es-krim-tentrem-1.jpg"
+                    alt="New Es Krim Tentrem"
+                    class="aspect-video rounded-lg"
+                    id="new-es-krim-tentrem-1"
+                  />
+                  <img
+                    src="images/kuliner/new-es-krim-tentrem/new-es-krim-tentrem-2.jpg"
+                    alt="New Es Krim Tentrem"
+                    class="aspect-video rounded-lg"
+                    id="new-es-krim-tentrem-2"
+                  />
+                  <img
+                    src="images/kuliner/new-es-krim-tentrem/new-es-krim-tentrem-3.jpg"
+                    alt="New Es Krim Tentrem"
+                    class="aspect-video rounded-lg"
+                    id="new-es-krim-tentrem-3"
+                  />
+
+                  <script>
+                    const slidesNewEsKrimTentrem = [
+                      "new-es-krim-tentrem-1",
+                      "new-es-krim-tentrem-2",
+                      "new-es-krim-tentrem-3",
+                    ];
+                    let currentIndexNewEsKrimTentrem = 0;
+                    let intervalNewEsKrimTentrem;
+
+                    function showSlideNewEsKrimTentrem(index) {
+                      if (index < 0) index = slidesNewEsKrimTentrem.length - 1;
+                      if (index >= slidesNewEsKrimTentrem.length) index = 0;
+
+                      for (let i = 0; i < slidesNewEsKrimTentrem.length; i++) {
+                        const slideNewEsKrimTentrem = document.getElementById(
+                          slidesNewEsKrimTentrem[i],
+                        );
+                        slideNewEsKrimTentrem.style.display = "none";
+                      }
+
+                      const activeSlideNewEsKrimTentrem =
+                        document.getElementById(slidesNewEsKrimTentrem[index]);
+                      activeSlideNewEsKrimTentrem.style.display = "block";
+
+                      currentIndexNewEsKrimTentrem = index;
+                    }
+
+                    function autoSlideNewEsKrimTentrem() {
+                      showSlideNewEsKrimTentrem(
+                        currentIndexNewEsKrimTentrem + 1,
+                      );
+                    }
+
+                    function restartAutoSlideNewEsKrimTentrem() {
+                      clearInterval(intervalNewEsKrimTentrem);
+                      intervalNewEsKrimTentrem = setInterval(
+                        autoSlideNewEsKrimTentrem,
+                        1000,
+                      );
+                    }
+
+                    document
+                      .getElementById("autoCarouselNewEsKrimTentrem")
+                      .addEventListener("mouseenter", () => {
+                        clearInterval(intervalNewEsKrimTentrem);
+                      });
+
+                    document
+                      .getElementById("autoCarouselNewEsKrimTentrem")
+                      .addEventListener("mouseleave", () => {
+                        restartAutoSlideNewEsKrimTentrem();
+                      });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                      showSlideNewEsKrimTentrem(0);
+                      restartAutoSlideNewEsKrimTentrem();
+                    });
+                  </script>
+                </figure>
+                <div class="h-32 w-full overflow-hidden rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15820.18595315014!2d110.821759!3d-7.569911000000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1662efe27d99%3A0x5ea32698e3b77f2f!2sNew%20Es%20Krim%20Tentrem!5e0!3m2!1sid!2sid!4v1747139484620!5m2!1sid!2sid"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Tentang New Es Krim Tentrem
+                </h2>
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <p>
+                    Tempat unik dengan segala es krim unik nya dan rasa yang
+                    selalu mudah di ingat. mengembalikan ke masa kecil anda
+                    dengan produk dari Es Krim tentrem. terdapat berbagai bentuk
+                    es krim seperti menu Upin Ipin, es krim lembut dan manis
+                    dibentuk seperti kepala dari tokoh animasi ikonik dari
+                    Malaysia. dan banyak es krim unik disini, selain es krim
+                    disini juga menyediakan Gado-gado, Nasi Langi, Lumpia dan
+                    masih banyak lagi. sangat sayang apabila berkunjung ke Kota
+                    Surakarta namun melewatkan kuliner ini.
+                  </p>
+                  <h3 class="font-bold">Alamat:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      Jl. Slamet Riyadi No.132, Keprabon, Kec. Banjarsari, Kota
+                      Surakarta, Jawa Tengah 57131
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: 11.00–21.00</li>
+                  </ul>
+                  <h3 class="font-bold">Kisaran Harga:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Makanan mulai Rp,23.000</li>
+                    <li>Minuman mulai Rp,6.000</li>
+                    <li>Es Krim mulai Rp,15.000</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(-1)"
+            >
+              ❮
+            </button>
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(1)"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+
+        <!-- Serabi Notosuman Ny. Lidia -->
+        <div
+          id="serabi-notosuman-ny-lidia"
+          class="carousel-item relative w-full"
+        >
+          <div class="m-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Serabi Notosuman Ny. Lidia
+                </h2>
+                <figure id="autoCarouselSerabiNotosumanNyLidia">
+                  <img
+                    src="images/kuliner/serabi-notosuman-ny-lidia/serabi-notosuman-ny-lidia-1.jpg"
+                    alt="Serabi Notosuman Ny. Lidia"
+                    class="aspect-video rounded-lg"
+                    id="serabi-notosuman-ny-lidia-1"
+                  />
+                  <img
+                    src="images/kuliner/serabi-notosuman-ny-lidia/serabi-notosuman-ny-lidia-2.jpg"
+                    alt="Serabi Notosuman Ny. Lidia"
+                    class="aspect-video rounded-lg"
+                    id="serabi-notosuman-ny-lidia-2"
+                  />
+                  <img
+                    src="images/kuliner/serabi-notosuman-ny-lidia/serabi-notosuman-ny-lidia-3.jpg"
+                    alt="Serabi Notosuman Ny. Lidia"
+                    class="aspect-video rounded-lg"
+                    id="serabi-notosuman-ny-lidia-3"
+                  />
+
+                  <script>
+                    const slidesSerabiNotosumanNyLidia = [
+                      "serabi-notosuman-ny-lidia-1",
+                      "serabi-notosuman-ny-lidia-2",
+                      "serabi-notosuman-ny-lidia-3",
+                    ];
+                    let currentIndexSerabiNotosumanNyLidia = 0;
+                    let intervalSerabiNotosumanNyLidia;
+
+                    function showSlideSerabiNotosumanNyLidia(index) {
+                      if (index < 0)
+                        index = slidesSerabiNotosumanNyLidia.length - 1;
+                      if (index >= slidesSerabiNotosumanNyLidia.length)
+                        index = 0;
+
+                      for (
+                        let i = 0;
+                        i < slidesSerabiNotosumanNyLidia.length;
+                        i++
+                      ) {
+                        const slideSerabiNotosumanNyLidia =
+                          document.getElementById(
+                            slidesSerabiNotosumanNyLidia[i],
+                          );
+                        slideSerabiNotosumanNyLidia.style.display = "none";
+                      }
+
+                      const activeSlideSerabiNotosumanNyLidia =
+                        document.getElementById(
+                          slidesSerabiNotosumanNyLidia[index],
+                        );
+                      activeSlideSerabiNotosumanNyLidia.style.display = "block";
+
+                      currentIndexSerabiNotosumanNyLidia = index;
+                    }
+
+                    function autoSlideSerabiNotosumanNyLidia() {
+                      showSlideSerabiNotosumanNyLidia(
+                        currentIndexSerabiNotosumanNyLidia + 1,
+                      );
+                    }
+
+                    function restartAutoSlideSerabiNotosumanNyLidia() {
+                      clearInterval(intervalSerabiNotosumanNyLidia);
+                      intervalSerabiNotosumanNyLidia = setInterval(
+                        autoSlideSerabiNotosumanNyLidia,
+                        1000,
+                      );
+                    }
+
+                    document
+                      .getElementById("autoCarouselSerabiNotosumanNyLidia")
+                      .addEventListener("mouseenter", () => {
+                        clearInterval(intervalSerabiNotosumanNyLidia);
+                      });
+
+                    document
+                      .getElementById("autoCarouselSerabiNotosumanNyLidia")
+                      .addEventListener("mouseleave", () => {
+                        restartAutoSlideSerabiNotosumanNyLidia();
+                      });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                      showSlideSerabiNotosumanNyLidia(0);
+                      restartAutoSlideSerabiNotosumanNyLidia();
+                    });
+                  </script>
+                </figure>
+                <div class="h-32 w-full overflow-hidden rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15819.909107091195!2d110.820108!3d-7.577452!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a16654f327ae9%3A0x3a3c6e3aed9ec44d!2sSerabi%20Notosuman%20Ny.%20Lidia!5e0!3m2!1sid!2sid!4v1747139409725!5m2!1sid!2sid"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden rounded-xl shadow-xl">
+              <div class="card-body glass rounded-xl p-6 backdrop-blur">
+                <h2 class="card-title mb-4 text-2xl font-bold">
+                  Tentang Serabi Notosuman Ny. Lidia
+                </h2>
+                <div class="glass bg-base-100/70 rounded-xl p-4 text-justify">
+                  <p>
+                    Serabi Notosuman Ny. Lidia adalah jenis serabi khas Solo
+                    yang dibuat dari bahan-bahan alami seperti tepung beras,
+                    pandan, gula, santan, garam, dan vanila. Serabi ini memiliki
+                    rasa gurih, lembut, dan manis yang khas, terutama ketika
+                    dinikmati saat masih hangat. Serabi Notosuman Ny. Lidia juga
+                    dikenal dengan ciri khasnya yaitu digulung dan dikemas dalam
+                    kotak warna hijau. sebaiknya segera dimakan karena tidak
+                    dapat bertahan lama karena menggunakan bahan alami dan tanpa
+                    bahan pengawet.
+                  </p>
+                  <h3 class="font-bold">Alamat:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>
+                      Jl. Moh. Yamin No.28, Jayengan, Kec. Serengan, Kota
+                      Surakarta, Jawa Tengah 57152
+                    </li>
+                  </ul>
+                  <h3 class="font-bold">Jam Operasional:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Setiap Hari: 05.00–17.00</li>
+                  </ul>
+                  <h3 class="font-bold">Kisaran Harga:</h3>
+                  <ul class="ml-5 list-disc">
+                    <li>Makanan mulai Rp,26.000/1 dus (10 serabi)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(-1)"
+            >
+              ❮
+            </button>
+            <button
+              class="btn btn-circle bg-base-100/50"
+              onclick="moveSlideKuliner(1)"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex w-full justify-center gap-2 py-4">
+        <button class="btn btn-xs" onclick="showSlideKuliner(0)">1</button>
+        <button class="btn btn-xs" onclick="showSlideKuliner(1)">2</button>
+        <button class="btn btn-xs" onclick="showSlideKuliner(2)">3</button>
+        <button class="btn btn-xs" onclick="showSlideKuliner(3)">4</button>
+        <button class="btn btn-xs" onclick="showSlideKuliner(4)">5</button>
+        <button class="btn btn-xs" onclick="showSlideKuliner(5)">6</button>
+        <button class="btn btn-xs" onclick="showSlideKuliner(6)">7</button>
+      </div>
+
+      <script>
+        const slidesKuliner = [
+          "restoran-kusuma-sari",
+          "pecel-lele-gandewa",
+          "nasi-liwet-bu-wongso-lemu",
+          "sate-kambing-mbok-galak",
+          "teh-tarik-88",
+          "new-es-krim-tentrem",
+          "serabi-notosuman-ny-lidia",
+        ];
+        let currentIndexKuliner = 0;
+        let intervalKuliner;
+
+        function showSlideKuliner(index) {
+          if (index < 0) index = slidesKuliner.length - 1;
+          if (index >= slidesKuliner.length) index = 0;
+
+          for (let i = 0; i < slidesKuliner.length; i++) {
+            const slideKuliner = document.getElementById(slidesKuliner[i]);
+            slideKuliner.style.display = "none";
+          }
+
+          const activeSlideKuliner = document.getElementById(
+            slidesKuliner[index],
+          );
+          activeSlideKuliner.style.display = "block";
+
+          currentIndexKuliner = index;
+        }
+
+        function moveSlideKuliner(step) {
+          showSlideKuliner(currentIndexKuliner + step);
+          restartAutoSlideKuliner();
+        }
+
+        function autoSlideKuliner() {
+          showSlideKuliner(currentIndexKuliner + 1);
+        }
+
+        function restartAutoSlideKuliner() {
+          clearInterval(intervalKuliner);
+          intervalKuliner = setInterval(autoSlideKuliner, 5000);
+        }
+
+        document
+          .getElementById("autoCarouselKuliner")
+          .addEventListener("mouseenter", () => {
+            clearInterval(intervalKuliner);
+          });
+
+        document
+          .getElementById("autoCarouselKuliner")
+          .addEventListener("mouseleave", () => {
+            restartAutoSlideKuliner();
+          });
+
+        document.addEventListener("DOMContentLoaded", () => {
+          showSlideKuliner(0);
+          restartAutoSlideKuliner();
+        });
+      </script>
+    </section>
+
+    <!-- Transportasi -->
+    <section id="transportasi" class="bg-base-100 px-4 py-16">
+      <div class="mb-12 mt-4 text-center">
+        <h2 class="text-primary text-4xl font-bold">Transportasi</h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <!-- Card Becak -->
+        <div
+          class="card bg-base-100 shadow-xl transition-shadow duration-300 hover:shadow-2xl"
+        >
+          <figure class="px-4 pt-4">
+            <img
+              src="./images/transportasi/becak.jpg"
+              alt="Becak"
+              class="h-48 w-full rounded-xl object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl font-bold">Becak Motor</h3>
+            <p>
+              Transportasi tradisional beroda tiga yang digerakkan tenaga
+              motor. Cocok untuk jarak dekat dan menikmati suasana kota dengan
+              santai.
+            </p>
+            <div class="mt-4">
+              <div class="badge badge-primary badge-lg">
+                Rp 10.000 - Rp 25.000
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Ojek -->
+        <div
+          class="card bg-base-100 shadow-xl transition-shadow duration-300 hover:shadow-2xl"
+        >
+          <figure class="px-4 pt-4">
+            <img
+              src="./images/transportasi/ojek.jpg"
+              alt="Ojek"
+              class="h-48 w-full rounded-xl object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl font-bold">Ojek</h3>
+            <p>
+              Transportasi sepeda motor dengan pengemudi. Cepat dan dapat
+              menjangkau area sempit. Tersedia dalam bentuk konvensional maupun
+              online.
+            </p>
+            <div class="mt-4">
+              <div class="badge badge-primary badge-lg">
+                Rp 15.000 - Rp 30.000
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Taksi -->
+        <div
+          class="card bg-base-100 shadow-xl transition-shadow duration-300 hover:shadow-2xl"
+        >
+          <figure class="px-4 pt-4">
+            <img
+              src="./images/transportasi/taksi.jpg"
+              alt="Taksi"
+              class="h-48 w-full rounded-xl object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl font-bold">Taksi</h3>
+            <p>
+              Transportasi mobil pribadi dengan pengemudi profesional. Nyaman,
+              ber-AC, dan cocok untuk perjalanan menengah hingga jauh dalam
+              kota.
+            </p>
+            <div class="mt-4">
+              <div class="badge badge-primary badge-lg">
+                Rp 25.000 - Rp 100.000
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Bus -->
+        <div
+          class="card bg-base-100 shadow-xl transition-shadow duration-300 hover:shadow-2xl"
+        >
+          <figure class="px-4 pt-4">
+            <img
+              src="./images/transportasi/bus.jpg"
+              alt="Bus"
+              class="h-48 w-full rounded-xl object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-xl font-bold">Bus</h3>
+            <p>
+              Transportasi umum dengan kapasitas besar. Ekonomis dan ramah
+              lingkungan. Ideal untuk perjalanan jauh atau antar kota dengan
+              harga terjangkau.
+            </p>
+            <div class="mt-4">
+              <div class="badge badge-primary badge-lg">
+                Rp 5.000 - Rp 50.000
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paket -->
+    <section id="paket" class="bg-base-200 px-4 py-16">
+      <div class="mb-12 mt-4 text-center">
+        <h2 class="text-primary text-4xl font-bold">Paket</h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Paket Wisata -->
+        <div class="card bg-base-100 overflow-hidden shadow-xl">
+          <figure class="px-4 pt-4">
+            <img
+              src="./images/paket/paket-wisata.jpg"
+              alt="Wisata Pantai"
+              class="h-full w-full rounded-lg object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-2xl font-bold">Paket Wisata</h3>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>1 Hari</span>
+              </div>
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span>5 Destinasi di Surakarta</span>
+              </div>
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
+                  />
+                </svg>
+                <span>Termasuk tiket masuk & dokumentasi</span>
+              </div>
+            </div>
+            <p class="my-4">
+              Nikmati perjalanan menyusuri jejak sejarah dan budaya lokal
+              melalui tur warisan budaya yang memukau. Kunjungi situs-situs
+              bersejarah, museum, dan bangunan peninggalan keraton sambil
+              ditemani pemandu lokal.
+            </p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <p class="text-primary text-lg font-bold">Rp 650.000</p>
+                <p class="text-sm text-gray-500">per orang</p>
+              </div>
+              <button class="btn btn-primary">
+                <a href="./pages/reservasi.html">Pesan Sekarang</a>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paket Kuliner -->
+        <div class="card bg-base-100 overflow-hidden shadow-xl">
+          <figure class="px-4 pt-4">
+            <img
+              src="./images/paket/paket-kuliner.jpg"
+              alt="Wisata Pantai"
+              class="h-full w-full rounded-lg object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-2xl font-bold">Paket Kuliner</h3>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>1 Hari</span>
+              </div>
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span>5 Kuliner di Surakarta</span>
+              </div>
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
+                  />
+                </svg>
+                <span>Cicipi 5 kuliner khas Surakarta</span>
+              </div>
+            </div>
+            <p class="my-4">
+              Temukan cita rasa otentik dalam tur kuliner malam yang mengajak
+              Anda menjelajahi jajanan legendaris, warung kaki lima terkenal,
+              dan pasar malam yang ramai. Pemandu lokal akan menemani Anda
+              menyusuri rute kuliner favorit warga setempat.
+            </p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <p class="text-primary text-lg font-bold">Rp 400.000</p>
+                <p class="text-sm text-gray-500">per orang</p>
+              </div>
+              <button class="btn btn-primary">
+                <a href="./pages/reservasi.html">Pesan Sekarang</a>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paket Wisata Kuliner -->
+        <div class="card bg-base-100 overflow-hidden shadow-xl">
+          <figure class="px-4 pt-4">
+            <img
+              src="./images/paket/paket-wisata-kuliner.jpg"
+              alt="Wisata Pantai"
+              class="h-full w-full rounded-lg object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title text-2xl font-bold">Paket Wisata-Kuliner</h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>1 hari</span>
+              </div>
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span>5 Wisata dan 5 Kuliner di Surakarta</span>
+              </div>
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="text-primary mr-2 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
+                  />
+                </svg>
+                <span>Termasuk tiket masuk museum & kuliner</span>
+              </div>
+            </div>
+            <p class="my-4">
+              Jelajahi kekayaan budaya dan sejarah kota-kota tua dengan
+              mengunjungi candi bersejarah, keraton, museum, dan mencoba kuliner
+              tradisional yang lezat.
+            </p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <div class="flex items-center">
+                  <p class="text-primary text-lg font-bold">Rp 4.200.000</p>
+                </div>
+                <p class="text-sm text-gray-500">per orang</p>
+              </div>
+              <button class="btn btn-primary">
+                <a href="./pages/reservasi.html">Pesan Sekarang</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-base-300 text-base-content">
+      <div class="container mx-auto px-4 py-10">
+        <div
+          class="flex flex-col items-center justify-between gap-6 md:flex-row"
+        >
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-bold">Ardhanaufa Tour Guide</h3>
+            <p class="text-sm">
+              Menyediakan layanan tour profesional di Surakarta dan
+              sekitarnya.<br />
+              Jelajahi budaya, sejarah, dan kuliner dengan pengalaman terbaik.
+            </p>
+          </div>
+          <div class="text-center md:text-right">
+            <p class="text-sm">
+              Kontak:
+              <a
+                href="mailto:info@ardhanaufapromotion@gmail.com"
+                class="link link-hover"
+              >
+                info@ardhanaufapromotion@gmail.com
+              </a>
+            </p>
+            <p class="text-sm">
+              <a href="https://wa.me/6285945368694"
+                >Telepon: +62 859-4536-8694</a
+              >
+            </p>
+            <div class="mt-2 flex justify-center gap-3 md:justify-end">
+              <a
+                href="https://www.instagram.com/ardh4_nauf4?igsh=MXRnbHZjZzA3bnFucQ=="
+                class="btn btn-sm btn-circle btn-ghost"
+                aria-label="Instagram"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 text-center text-sm text-gray-500">
+          &copy; 2025 Ardhanaufa Tour Guide. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <script>
+      function switchModal(toLogin = false) {
+        document.getElementById("loginModal").close();
+        document.getElementById("registerModal").close();
+        if (toLogin) {
+          document.getElementById("loginModal").showModal();
+        } else {
+          document.getElementById("registerModal").showModal();
+        }
+      }
+
+      // ===================== REGISTER =====================
+      document
+        .getElementById("formRegister")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const username = document.getElementById("regUsername").value.trim();
+          const password = document.getElementById("regPassword").value;
+
+          let users = JSON.parse(localStorage.getItem("users")) || [];
+
+          const exists = users.some((u) => u.username === username);
+          if (exists) {
+            document.getElementById("registerStatus").textContent =
+              "Username sudah digunakan.";
+            return;
+          }
+
+          users.push({ username, password });
+          localStorage.setItem("users", JSON.stringify(users));
+          document.getElementById("registerStatus").textContent =
+            "Pendaftaran berhasil. Silakan login.";
+          switchModal(true);
+        });
+
+      // ===================== LOGIN =====================
+      document
+        .getElementById("formLogin")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const username = document
+            .getElementById("loginUsername")
+            .value.trim();
+          const password = document.getElementById("loginPassword").value;
+
+          const users = JSON.parse(localStorage.getItem("users")) || [];
+
+          const found = users.find(
+            (u) => u.username === username && u.password === password,
+          );
+          if (found) {
+            const loginTime = new Date().toLocaleString();
+            localStorage.setItem(
+              "loginUser",
+              JSON.stringify({ username, loginTime }),
+            );
+            document.getElementById("loginModal").close();
+            location.reload();
+          } else {
+            document.getElementById("loginStatus").textContent =
+              "Username atau password salah.";
+          }
+        });
+
+      // ===================== TAMPILKAN LOGIN INFO =====================
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem("loginUser"));
+        if (user) {
+          const navbar = document.querySelector(".navbar-end");
+          const infoLogin = document.createElement("div");
+          infoLogin.className = "dropdown dropdown-end";
+          infoLogin.innerHTML = `
+        <div tabindex="0" role="button" class="btn btn-primary rounded-field">Akun</div>
+        <div tabindex="0"
+          class="menu dropdown-content bg-base-100 rounded-box z-1 mt-4 w-52 p-2 shadow-sm">
+          <p>Halo, <b>${user.username}</b><br/>
+          <span>Login: ${user.loginTime}</span><br/>
+          <button id="logoutBtn" class="btn btn-sm btn-outline mt-1">Logout</button>
+          </div>
+      `;
+          navbar.prepend(infoLogin);
+          loginBtn.classList.add("hidden");
+
+          document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.removeItem("loginUser");
+            location.reload();
+            loginBtn.classList.remove("hidden");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservasi</title>
+
+    <!-- CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- JS -->
+    <script src="./../js/reservasi.js"></script>
+  </head>
+  <body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-primary p-4 text-white md:p-6">
+      <div class="container mx-auto">
+        <h1 class="text-center text-3xl font-bold md:text-4xl">
+          Reservasi Ardhanaufa
+        </h1>
+        <p class="mt-2 text-center text-lg opacity-80">
+          Rencanakan perjalanan wisata Anda dengan mudah
+        </p>
+      </div>
+    </header>
+
+    <!-- Form Container -->
+    <div class="container mx-auto px-4 py-8">
+      <div
+        class="mx-auto max-w-4xl overflow-hidden rounded-lg bg-white shadow-lg"
+      >
+        <!-- Form Steps Indicator -->
+        <div class="bg-indigo-50 p-4">
+          <ul class="steps steps-horizontal w-full">
+            <li class="step step-primary" id="step-1-indicator">
+              Informasi Pribadi
+            </li>
+            <li class="step" id="step-2-indicator">Informasi Perjalanan</li>
+            <li class="step" id="step-3-indicator">Pilihan Paket</li>
+            <li class="step" id="step-4-indicator">Konfirmasi</li>
+          </ul>
+        </div>
+
+        <!-- Form -->
+        <form id="reservationForm" class="p-6">
+          <!-- Step 1: Personal Information -->
+          <div id="step-1" class="space-y-6">
+            <h2
+              class="border-b border-gray-200 pb-4 text-2xl font-semibold text-gray-800"
+            >
+              Informasi Pribadi
+            </h2>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text font-medium">Nama Lengkap</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Masukkan nama lengkap"
+                class="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text font-medium">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="@gmail.com"
+                class="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text font-medium">Nomor HP</span>
+              </label>
+              <input
+                type="tel"
+                placeholder="08xx"
+                class="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text font-medium">Masukan NIK</span>
+              </label>
+              <input
+                type="tel"
+                placeholder="Masukkan NIK"
+                class="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            <div class="mt-8 flex justify-end">
+              <button type="button" id="next-to-step-2" class="btn btn-primary">
+                Lanjut
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Travel Information -->
+          <div id="step-2" class="hidden space-y-6">
+            <h2
+              class="border-b border-gray-200 pb-4 text-2xl font-semibold text-gray-800"
+            >
+              Informasi Perjalanan
+            </h2>
+
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text font-medium"
+                    >Tanggal Keberangkatan</span
+                  >
+                </label>
+                <input
+                  type="date"
+                  class="input input-bordered w-full"
+                  required
+                />
+              </div>
+
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text font-medium">Jam Keberangkatan</span>
+                </label>
+                <input
+                  type="time"
+                  class="input input-bordered w-full"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text font-medium">Jumlah Orang</span>
+              </label>
+              <input
+                type="number"
+                min="1"
+                value="1"
+                class="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text font-medium">Pilih Transportasi</span>
+              </label>
+              <select class="select select-bordered w-full" required>
+                <option disabled selected>Pilih jenis transportasi</option>
+                <option value="becak">Becak Motor</option>
+                <option value="ojek">Ojek</option>
+                <option value="taksi">Taksi</option>
+                <option value="bus">Bus</option>
+              </select>
+            </div>
+
+            <div class="mt-8 flex justify-between">
+              <button type="button" id="back-to-step-1" class="btn btn-outline">
+                Kembali
+              </button>
+              <button type="button" id="next-to-step-3" class="btn btn-primary">
+                Lanjut
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Package Selection -->
+          <div id="step-3" class="hidden space-y-6">
+            <h2
+              class="border-b border-gray-200 pb-4 text-2xl font-semibold text-gray-800"
+            >
+              Pilihan Paket
+            </h2>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text font-medium">Jenis Paket</span>
+              </label>
+              <select
+                id="package-type"
+                class="select select-bordered w-full"
+                required
+              >
+                <option disabled selected>Pilih paket wisata</option>
+                <option value="wisata">Paket Wisata</option>
+                <option value="kuliner">Paket Kuliner</option>
+                <option value="wisata-kuliner">Paket Wisata-Kuliner</option>
+              </select>
+            </div>
+
+            <!-- Tourism Package Options -->
+            <div id="wisata-options" class="hidden space-y-4">
+              <h3 class="text-lg font-medium text-gray-700">
+                Pilih Tempat Wisata dengan ketentuan sesuai paket
+              </h3>
+              <p class="text-sm text-gray-500">
+                Silakan pilih tempat wisata dari daftar berikut:
+              </p>
+
+              <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary wisata-checkbox"
+                    />
+                    <span class="label-text">Keraton Surakarta</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary wisata-checkbox"
+                    />
+                    <span class="label-text">Solo Safari</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary wisata-checkbox"
+                    />
+                    <span class="label-text">Pasar Klewer</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary wisata-checkbox"
+                    />
+                    <span class="label-text">Taman Balekambang</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary wisata-checkbox"
+                    />
+                    <span class="label-text">Museum Radya Pustaka</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary wisata-checkbox"
+                    />
+                    <span class="label-text">Museum Keris Nusantara</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary wisata-checkbox"
+                    />
+                    <span class="label-text">Taman Sriwedari</span>
+                  </label>
+                </div>
+              </div>
+              <div id="wisata-alert" class="alert alert-warning hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+                <span>Pilih tempat wisata sesuai kemauan anda.</span>
+              </div>
+            </div>
+
+            <!-- Culinary Package Options -->
+            <div id="kuliner-options" class="hidden space-y-4">
+              <h3 class="text-lg font-medium text-gray-700">
+                Pilih Kuliner sesuai paket yang dipilih
+              </h3>
+              <p class="text-sm text-gray-500">
+                Silakan pilih kuliner dari daftar berikut:
+              </p>
+
+              <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary kuliner-checkbox"
+                    />
+                    <span class="label-text">Restoran Kusuma Sari</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary kuliner-checkbox"
+                    />
+                    <span class="label-text">Pecel Lele Gandewa</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary kuliner-checkbox"
+                    />
+                    <span class="label-text">Nasi Liwet Bu Wongso Lemu</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary kuliner-checkbox"
+                    />
+                    <span class="label-text">Sate Kambing Mbok Galak</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary kuliner-checkbox"
+                    />
+                    <span class="label-text">Teh Tarik 88</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary kuliner-checkbox"
+                    />
+                    <span class="label-text">New Es Krim Tentrem</span>
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer justify-start gap-3">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary kuliner-checkbox"
+                    />
+                    <span class="label-text">Serabi Notosuman Ny. Lidia</span>
+                  </label>
+                </div>
+              </div>
+              <div id="kuliner-alert" class="alert alert-warning hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+                <span>Pilih tepat 5 kuliner.</span>
+              </div>
+            </div>
+
+            <div class="mt-8 flex justify-between">
+              <button type="button" id="back-to-step-2" class="btn btn-outline">
+                Kembali
+              </button>
+              <button type="button" id="next-to-step-4" class="btn btn-primary">
+                Lanjut
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4: Confirmation -->
+          <div id="step-4" class="hidden space-y-6">
+            <h2
+              class="border-b border-gray-200 pb-4 text-2xl font-semibold text-gray-800"
+            >
+              Konfirmasi Reservasi
+            </h2>
+
+            <div class="rounded-lg bg-indigo-50 p-4">
+              <h3 class="mb-4 text-lg font-medium text-gray-800">
+                Ringkasan Reservasi Anda
+              </h3>
+
+              <div class="space-y-4">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <p class="text-sm font-medium text-gray-500">
+                      Nama Lengkap
+                    </p>
+                    <p id="summary-name" class="text-gray-800">-</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-500">Email</p>
+                    <p id="summary-email" class="text-gray-800">-</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-500">Nomor HP</p>
+                    <p id="summary-phone" class="text-gray-800">-</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-500">
+                      Tanggal & Jam
+                    </p>
+                    <p id="summary-datetime" class="text-gray-800">-</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-500">
+                      Jumlah Orang
+                    </p>
+                    <p id="summary-people" class="text-gray-800">-</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-500">
+                      Transportasi
+                    </p>
+                    <p id="summary-transport" class="text-gray-800">-</p>
+                  </div>
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium text-gray-500">
+                    Paket yang Dipilih
+                  </p>
+                  <p id="summary-package" class="text-gray-800">-</p>
+                </div>
+
+                <div id="summary-wisata-container" class="hidden">
+                  <p class="text-sm font-medium text-gray-500">Tempat Wisata</p>
+                  <p id="summary-wisata" class="text-gray-800">-</p>
+                </div>
+
+                <div id="summary-kuliner-container" class="hidden">
+                  <p class="text-sm font-medium text-gray-500">Kuliner</p>
+                  <p id="summary-kuliner" class="text-gray-800">-</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-info shadow-lg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="h-6 w-6 shrink-0 stroke-current"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <div>
+                <span
+                  >Periksa kembali data reservasi Anda sebelum konfirmasi.</span
+                >
+              </div>
+            </div>
+
+            <div class="form-control">
+              <label class="label cursor-pointer justify-start gap-3">
+                <input
+                  type="checkbox"
+                  class="checkbox checkbox-primary"
+                  id="terms-checkbox"
+                  required
+                />
+                <span class="label-text"
+                  >Saya menyetujui syarat dan ketentuan yang berlaku</span
+                >
+              </label>
+            </div>
+
+            <div class="mt-8 flex justify-between">
+              <button type="button" id="back-to-step-3" class="btn btn-outline">
+                Kembali
+              </button>
+              <button
+                type="submit"
+                id="submit-reservation"
+                class="btn btn-success"
+              >
+                Konfirmasi Reservasi
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-gray-800 py-8 text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h3 class="mb-4 text-xl font-semibold">Tentang Kami</h3>
+            <p class="text-gray-300">
+              Layanan reservasi wisata terbaik untuk pengalaman liburan yang tak
+              terlupakan di Indonesia.
+            </p>
+          </div>
+          <div>
+            <h3 class="mb-4 text-xl font-semibold">Kontak</h3>
+            <p class="text-gray-300">
+              <a
+                href="mailto:info@ardhanaufapromotion@gmail.com"
+                class="link link-hover"
+                >info@ardhanaufapromotion@gmail.com</a
+              >
+            </p>
+            <p class="text-gray-300">
+              <a href="https://wa.me/6285945368694"
+                >Telepon: +62 859-4536-8694</a
+              >
+            </p>
+          </div>
+          <div>
+            <h3 class="mb-4 text-xl font-semibold">Jam Operasional</h3>
+            <p class="text-gray-300">Senin - Jumat: 08.00 - 17.00</p>
+            <p class="text-gray-300">Sabtu: 09.00 - 15.00</p>
+          </div>
+          <div>
+            <h3 class="mb-4 text-xl font-semibold">Ikuti Kami</h3>
+            <div class="flex space-x-50">
+              <a
+                href="https://www.instagram.com/ardh4_nauf4?igsh=MXRnbHZjZzA3bnFucQ=="
+                class="text-white hover:text-indigo-300"
+                aria-label="Instagram"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-gray-700 pt-6 text-center">
+          <p class="text-gray-300">
+            &copy; 2025 Wisata Online. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Reservasi Berhasil!</h3>
+        <p class="py-4">
+          Terima kasih telah melakukan reservasi. Kami akan mengirimkan
+          konfirmasi melalui email yang telah Anda daftarkan.
+        </p>
+        <div class="modal-action">
+          <button id="close-modal" class="btn">
+            <a href="./../index.html">Tutup</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

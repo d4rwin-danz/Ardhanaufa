@@ -1,0 +1,77 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Wisata */
+#keraton-surakarta .card {
+  background-image: url("./../images/wisata/keraton-surakarta/keraton-surakarta-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#solo-safari .card {
+  background-image: url("./../images/wisata/solo-safari/solo-safari-5.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#pasar-klewer .card {
+  background-image: url("./../images/wisata/pasar-klewer/pasar-klewer-5.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#taman-balekambang .card {
+  background-image: url("./../images/wisata/taman-balekambang/taman-balekambang-5.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#museum-radya-pustaka .card {
+  background-image: url("./../images/wisata/museum-radya-pustaka/museum-radya-pustaka-5.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#museum-keris-nusantara .card {
+  background-image: url("./../images/wisata/museum-keris-nusantara/museum-keris-nusantara-5.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#taman-sriwedari .card {
+  background-image: url("./../images/wisata/taman-sriwedari/taman-sriwedari-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Kuliner */
+#restoran-kusuma-sari .card {
+  background-image: url("./../images/kuliner/restoran-kusuma-sari/restoran-kusuma-sari-3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#pecel-lele-gandewa .card {
+  background-image: url("./../images/kuliner/pecel-lele-gandewa/pecel-lele-gandewa-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#nasi-liwet-bu-wongso-lemu .card {
+  background-image: url("./../images/kuliner/nasi-liwet-bu-wongso-lemu/nasi-liwet-bu-wongso-lemu-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#sate-kambing-mbok-galak .card {
+  background-image: url("./../images/kuliner/sate-kambing-mbok-galak/sate-kambing-mbok-galak-3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#teh-tarik-88 .card {
+  background-image: url("./../images/kuliner/teh-tarik-88/teh-tarik-88-3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#new-es-krim-tentrem .card {
+  background-image: url("./../images/kuliner/new-es-krim-tentrem/new-es-krim-tentrem-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#serabi-notosuman-ny-lidia .card {
+  background-image: url("./../images/kuliner/serabi-notosuman-ny-lidia/serabi-notosuman-ny-lidia-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
